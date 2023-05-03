@@ -5,8 +5,7 @@ environment:
   sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
-  dox_core:
-    path: /Users/zinkyawkyaw/projects/dart/dox-core
+  dox_core: ^0.0.3
   postgres: ^2.6.1
   dox_query_builder: ^1.0.3
   json_annotation: ^4.8.0

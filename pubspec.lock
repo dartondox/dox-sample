@@ -188,18 +188,19 @@ packages:
   dox_core:
     dependency: "direct main"
     description:
-      path: "/Users/zinkyawkyaw/projects/dart/dox-core"
-      relative: false
-    source: path
-    version: "0.0.2"
+      name: dox_core
+      sha256: aafbc745b1e466409ebaa3eaeaa51f3054b22cdd016325cf8655d6da0b19191b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   dox_query_builder:
     dependency: "direct main"
     description:
       name: dox_query_builder
-      sha256: "78f57f6771e6d4ecfc781500d19395030dce087d1c9e92c0cbdd8c9aa4461ce7"
+      sha256: c72f2354444c0dcc4012280021ed52e6d22b3bc735376cdd5eaece9f9138f415
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   file:
     dependency: transitive
     description:
