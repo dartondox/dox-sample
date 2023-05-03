@@ -1,16 +1,17 @@
 import 'package:dox_core/dox_core.dart';
 import 'package:dox_sample/config/di.dart';
+import 'package:dox_sample/models/admin.model.dart';
 import 'package:dox_sample/services/admin.service.dart';
 
 class AdminController {
   /// GET /admins
-  index(DoxRequest req) {
-    return 'listing';
+  index(DoxRequest req) async {
+    return await Admin().all();
   }
 
   /// GET /admins/create
   create(DoxRequest req) {
-    return 'create';
+    return 'admin create view';
   }
 
   /// POST /admins
@@ -24,22 +25,23 @@ class AdminController {
   }
 
   /// GET /admins/{id}
-  show(DoxRequest req, String id) {
-    return id;
+  show(DoxRequest req, String id) async {
+    return await Admin().find(id);
   }
 
   /// GET /admins/{id}/edit
-  edit(DoxRequest req, String id) {
-    return id;
+  edit(DoxRequest req, String id) async {
+    await Admin().find(id);
+    return 'show edit view';
   }
 
   /// PUT|PATCH /admins/{id}
   update(DoxRequest req, String id) {
-    return id;
+    return Admin().where('id', id).update({'name': req.body['name']});
   }
 
   /// DELETE /admins/{id}
   destroy(DoxRequest req, String id) {
-    return id;
+    return Admin().where('id', id).delete();
   }
 }
