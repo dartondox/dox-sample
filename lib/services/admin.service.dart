@@ -5,7 +5,11 @@ class AdminService {
 
   AdminService(this.model);
 
-  sayHello(name) {
-    return {"message": "hello $name"};
+  Future<Admin> createAdmin(String email) async {
+    Admin admin = Admin();
+    admin.name = 'AJ';
+    admin.email = email;
+    admin = await admin.save();
+    return admin;
   }
 }

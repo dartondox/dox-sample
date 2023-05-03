@@ -1,4 +1,5 @@
 import 'package:dox_core/dox_core.dart';
+import 'package:dox_sample/http/controllers/admin.controller.dart';
 import 'package:dox_sample/http/controllers/web.controller.dart';
 import 'package:dox_sample/http/middleware/custom.middleware.dart';
 import 'package:dox_sample/http/middleware/function.middleware.dart';
@@ -23,8 +24,6 @@ class WebRouter extends Router {
     ]);
 
     /// with params
-    Route.get('/admin/{name}', web.withParam);
-
-    Route.get('/dependency', web.dependencyInjection);
+    Route.resource('admins', AdminController());
   }
 }

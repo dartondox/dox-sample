@@ -25,7 +25,7 @@ class Config implements AppConfig {
 
   /// enable database query log in terminal
   @override
-  bool get enableQueryLog => true;
+  bool get enableQueryLog => false;
 
   /// Exception Handler
   @override

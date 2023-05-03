@@ -22,8 +22,12 @@ class WebController {
     return {"message": "hello $name"};
   }
 
-  dependencyInjection(DoxRequest req) {
-    var service = inject<AdminService>();
-    return service.sayHello('Dox');
+  createAdmin(DoxRequest req) async {
+    try {
+      var service = inject<AdminService>();
+      return await service.createAdmin(req.body['email']);
+    } catch (error) {
+      return InternalErrorException(message: error.toString());
+    }
   }
 }
