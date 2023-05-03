@@ -36,12 +36,13 @@ class AdminController {
   }
 
   /// PUT|PATCH /admins/{id}
-  update(DoxRequest req, String id) {
-    return Admin().where('id', id).update({'name': req.body['name']});
+  update(DoxRequest req, String id) async {
+    await Admin().where('id', id).update({'name': req.body['name']});
+    return await Admin().newQuery.find(id);
   }
 
   /// DELETE /admins/{id}
-  destroy(DoxRequest req, String id) {
-    return Admin().where('id', id).delete();
+  destroy(DoxRequest req, String id) async {
+    return await Admin().where('id', id).delete();
   }
 }
