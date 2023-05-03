@@ -5,11 +5,11 @@ environment:
   sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
+  dox_core: ^0.0.2
   postgres: ^2.6.1
-  sql_query_builder: ^1.1.0
+  dox_query_builder: ^1.0.0
   json_annotation: ^4.8.0
   path: ^1.8.3
-  dox_core: ^0.0.1
 
 dev_dependencies:
   json_serializable: ^6.6.1
