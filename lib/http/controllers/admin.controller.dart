@@ -18,7 +18,7 @@ class AdminController {
   store(DoxRequest req) async {
     try {
       var service = inject<AdminService>();
-      return await service.createAdmin(req.body['email']);
+      return await service.createAdmin(req.input('email'));
     } catch (error) {
       return InternalErrorException(message: error.toString());
     }
