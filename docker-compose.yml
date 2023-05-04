@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+
+  # Http server
+  dox:
+    build: .
+    hostname: dox
+    ports:
+      # export:internal
+      - "3001:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Postgres database
+  postgres:
+    image: postgres:14.1
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432"
+    restart: always
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-q', '-U', 'postgres']
+      interval: 5s
+      retries: 5
