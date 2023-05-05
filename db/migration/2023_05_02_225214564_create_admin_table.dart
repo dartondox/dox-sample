@@ -5,6 +5,7 @@ Future<void> up() async {
     table.id();
     table.string('name').nullable();
     table.string('email').unique();
+    table.string('password');
     table.string('status').withDefault('active');
     table.softDeletes();
     table.timestamps();

@@ -5,10 +5,11 @@ class AdminService {
 
   AdminService(this.model);
 
-  Future<Admin> createAdmin(String email) async {
+  Future<Admin> createAdmin(String email, String password) async {
     Admin admin = Admin();
-    admin.name = 'AJ';
+    admin.name = 'Dox';
     admin.email = email;
+    admin.password = password;
     admin = await admin.save();
     return admin;
   }

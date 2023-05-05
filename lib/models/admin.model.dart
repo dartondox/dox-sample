@@ -4,25 +4,31 @@ part 'admin.model.g.dart';
 
 @IsModel()
 class Admin extends Model with SoftDeletes {
-  @Column()
+  @override
+  List<String> get hidden => ['password'];
+
+  @JsonKey()
   int? id;
 
-  @Column()
+  @JsonKey()
   String? name;
 
-  @Column()
+  @JsonKey()
   String? status;
 
-  @Column()
+  @JsonKey()
   String? email;
 
-  @Column(name: 'deleted_at')
+  @JsonKey(fromJson: hashPassword)
+  String? password;
+
+  @JsonKey(name: 'deleted_at')
   DateTime? deletedAt;
 
-  @Column(name: 'created_at')
+  @JsonKey(name: 'created_at')
   DateTime? createdAt;
 
-  @Column(name: 'updated_at')
+  @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
 
   @override
@@ -30,4 +36,8 @@ class Admin extends Model with SoftDeletes {
 
   @override
   toMap() => _$AdminToJson(this);
+
+  static hashPassword(data) {
+    return Hash.make(data);
+  }
 }

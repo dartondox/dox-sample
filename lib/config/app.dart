@@ -5,35 +5,30 @@ import 'package:dox_sample/routes/web.dart';
 
 class Config implements AppConfig {
   @override
+  String get appKey => Env.get('APP_KEY');
+
+  @override
   int get serverPort => int.parse(Env.get('APP_PORT', 3000));
 
-  /// Database Driver
   @override
-  String get dbDriver => Env.get('DB_DRIVER', DatabaseDriver.postgres);
+  DBConfig get dbConfig => DBConfig(
+        dbDriver: Env.get('DB_DRIVER', DatabaseDriver.postgres),
+        dbHost: Env.get('DB_HOST', 'localhost'),
+        dbPort: int.parse(Env.get('DB_PORT', '5432')),
+        dbName: Env.get('DB_NAME', 'dox'),
+        dbUsername: Env.get('DB_USERNAME', 'postgres'),
+        dbPassword: Env.get('DB_PASSWORD', 'postgres'),
+        enableQueryLog: false,
+      );
 
-  /// PostgresSQL credentials
   @override
-  String get dbHost => Env.get('DB_HOST', 'localhost');
-  @override
-  int get dbPort => int.parse(Env.get('DB_PORT', '5432'));
-  @override
-  String get dbName => Env.get('DB_NAME', 'dox');
-  @override
-  String get dbUsername => Env.get('DB_USERNAME', 'postgres');
-  @override
-  String get dbPassword => Env.get('DB_PASSWORD', 'postgres');
+  CORSConfig get cors => CORSConfig(
+        allowOrigin: '*',
+      );
 
-  /// enable database query log in terminal
-  @override
-  bool get enableQueryLog => false;
-
-  /// Exception Handler
   @override
   ExceptionHandler get exceptionHandler => ResponseExceptionHandler();
 
   @override
-  List<Router> get routers => [
-        WebRouter(),
-        ApiRouter(),
-      ];
+  List<Router> get routers => [WebRouter(), ApiRouter()];
 }
