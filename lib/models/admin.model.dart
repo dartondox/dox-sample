@@ -1,4 +1,4 @@
-import 'package:dox_query_builder/dox_query_builder.dart';
+import 'package:dox_core/dox_core.dart';
 
 part 'admin.model.g.dart';
 
