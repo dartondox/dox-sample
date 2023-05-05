@@ -1,4 +1,4 @@
-import 'package:dox_query_builder/dox_query_builder.dart'; // ignore: file_names
+import 'package:dox_core/dox_core.dart'; // ignore: file_names
 
 Future<void> up() async {
   await Schema.create('admin', (Table table) {
