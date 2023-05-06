@@ -213,10 +213,10 @@ packages:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: c5dbadcb9a147cb542e9cef2d419d31ea9532d75d1235067f21b706a1200d63e
+      sha256: "1766c0efcb71fb3f680d2268bbe0e3aa262aab809cf4edfa079b3096ea76d8d9"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.8"
+    version: "0.0.9"
   dox_query_builder:
     dependency: transitive
     description:

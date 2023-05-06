@@ -11,7 +11,7 @@ Admin _$AdminFromJson(Map<String, dynamic> json) => Admin()
   ..name = json['name'] as String?
   ..status = json['status'] as String?
   ..email = json['email'] as String?
-  ..password = Admin.hashPassword(json['password'])
+  ..password = json['password'] as String?
   ..deletedAt = json['deleted_at'] == null
       ? null
       : DateTime.parse(json['deleted_at'] as String)
@@ -27,7 +27,7 @@ Map<String, dynamic> _$AdminToJson(Admin instance) => <String, dynamic>{
       'name': instance.name,
       'status': instance.status,
       'email': instance.email,
-      'password': instance.password,
+      'password': Admin.hashPassword(instance.password),
       'deleted_at': instance.deletedAt?.toIso8601String(),
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),

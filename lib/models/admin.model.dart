@@ -5,7 +5,7 @@ part 'admin.model.g.dart';
 @IsModel()
 class Admin extends Model with SoftDeletes {
   @override
-  List<String> get hidden => ['password'];
+  List<String> get hidden => [];
 
   @JsonKey()
   int? id;
@@ -19,7 +19,7 @@ class Admin extends Model with SoftDeletes {
   @JsonKey()
   String? email;
 
-  @JsonKey(fromJson: hashPassword)
+  @JsonKey(toJson: hashPassword)
   String? password;
 
   @JsonKey(name: 'deleted_at')
