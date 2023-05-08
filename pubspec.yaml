@@ -5,7 +5,7 @@ environment:
   sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
-  dox_core: ^0.0.9
+  dox_core: ^0.0.11
 
 dev_dependencies:
   json_serializable: ^6.6.1
