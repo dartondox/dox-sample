@@ -2,40 +2,31 @@ import 'package:dox_core/dox_core.dart';
 
 part 'admin.model.g.dart';
 
-@IsModel()
-class Admin extends Model with SoftDeletes {
+@DoxModel()
+class Admin extends AdminGenerator with SoftDeletes {
   @override
-  List<String> get hidden => [];
+  List<String> get hidden => ['password'];
 
-  @JsonKey()
-  int? id;
-
-  @JsonKey()
+  @Column()
   String? name;
 
-  @JsonKey()
+  @Column()
   String? status;
 
-  @JsonKey()
+  @Column()
   String? email;
 
-  @JsonKey(toJson: hashPassword)
+  @Column(beforeSave: hashPassword)
   String? password;
 
-  @JsonKey(name: 'deleted_at')
+  @Column(name: 'deleted_at')
   DateTime? deletedAt;
 
-  @JsonKey(name: 'created_at')
+  @Column(name: 'created_at')
   DateTime? createdAt;
 
-  @JsonKey(name: 'updated_at')
+  @Column(name: 'updated_at')
   DateTime? updatedAt;
-
-  @override
-  fromJson(Map<String, dynamic> json) => _$AdminFromJson(json);
-
-  @override
-  toMap() => _$AdminToJson(this);
 
   static hashPassword(data) {
     return Hash.make(data);

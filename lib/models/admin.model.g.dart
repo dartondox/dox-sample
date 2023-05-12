@@ -3,26 +3,38 @@
 part of 'admin.model.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// Generator: DoxModelBuilder
 // **************************************************************************
 
-Admin _$AdminFromJson(Map<String, dynamic> json) => Admin()
-  ..id = json['id'] as int?
-  ..name = json['name'] as String?
-  ..status = json['status'] as String?
-  ..email = json['email'] as String?
-  ..password = json['password'] as String?
-  ..deletedAt = json['deleted_at'] == null
-      ? null
-      : DateTime.parse(json['deleted_at'] as String)
-  ..createdAt = json['created_at'] == null
-      ? null
-      : DateTime.parse(json['created_at'] as String)
-  ..updatedAt = json['updated_at'] == null
-      ? null
-      : DateTime.parse(json['updated_at'] as String);
+class AdminGenerator extends Model<Admin> {
+  @override
+  String get primaryKey => 'id';
 
-Map<String, dynamic> _$AdminToJson(Admin instance) => <String, dynamic>{
+  int? get id => tempIdValue;
+
+  set id(val) => tempIdValue = val;
+
+  @override
+  Admin fromMap(Map<String, dynamic> m) => Admin()
+    ..id = m['id'] as int?
+    ..name = m['name'] as String?
+    ..status = m['status'] as String?
+    ..email = m['email'] as String?
+    ..password = m['password'] as String?
+    ..deletedAt = m['deleted_at'] == null
+        ? null
+        : DateTime.parse(m['deleted_at'] as String)
+    ..createdAt = m['created_at'] == null
+        ? null
+        : DateTime.parse(m['created_at'] as String)
+    ..updatedAt = m['updated_at'] == null
+        ? null
+        : DateTime.parse(m['updated_at'] as String);
+
+  @override
+  Map<String, dynamic> convertToMap(i) {
+    Admin instance = i as Admin;
+    return {
       'id': instance.id,
       'name': instance.name,
       'status': instance.status,
@@ -32,3 +44,5 @@ Map<String, dynamic> _$AdminToJson(Admin instance) => <String, dynamic>{
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
+  }
+}
