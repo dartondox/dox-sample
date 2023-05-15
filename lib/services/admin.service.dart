@@ -1,4 +1,4 @@
-import 'package:dox_sample/models/admin.model.dart';
+import 'package:dox_sample/models/admin/admin.model.dart';
 
 class AdminService {
   final Admin model;
@@ -6,7 +6,7 @@ class AdminService {
   AdminService(this.model);
 
   Future<Admin> createAdmin(String email, String password) async {
-    Admin admin = Admin();
+    Admin admin = model.newQuery;
     admin.name = 'Dox';
     admin.email = email;
     admin.password = password;

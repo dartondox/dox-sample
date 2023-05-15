@@ -1,5 +1,5 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_sample/models/admin.model.dart';
+import 'package:dox_sample/models/admin/admin.model.dart';
 import 'package:dox_sample/services/admin.service.dart';
 
 IocContainer ioc = IocContainer();
