@@ -10,7 +10,7 @@ class AdminService {
     admin.name = 'Dox';
     admin.email = email;
     admin.password = password;
-    admin = await admin.save();
+    await admin.save();
     return admin;
   }
 }

@@ -22,12 +22,6 @@ class Admin extends AdminGenerator with SoftDeletes {
   @Column(name: 'deleted_at')
   DateTime? deletedAt;
 
-  @Column(name: 'created_at')
-  DateTime? createdAt;
-
-  @Column(name: 'updated_at')
-  DateTime? updatedAt;
-
   static hashPassword(data) {
     return Hash.make(data);
   }

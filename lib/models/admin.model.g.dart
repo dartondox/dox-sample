@@ -10,9 +10,26 @@ class AdminGenerator extends Model<Admin> {
   @override
   String get primaryKey => 'id';
 
+  @override
+  Map<String, dynamic> get timestampsColumn => {
+        'created_at': 'created_at',
+        'updated_at': 'updated_at',
+      };
+
   int? get id => tempIdValue;
 
   set id(val) => tempIdValue = val;
+
+  Admin get newQuery => Admin();
+
+  @override
+  List get preloadList => [];
+
+  @override
+  Map<String, Function> get relationsResultMatcher => {};
+
+  @override
+  Map<String, Function> get relationsQueryMatcher => {};
 
   @override
   Admin fromMap(Map<String, dynamic> m) => Admin()
