@@ -6,13 +6,12 @@ import 'package:dox_sample/config/di.dart';
 void main() async {
   Config config = Config();
 
-  Dox dox = Dox();
+  /// Initialize Postgres connection
+  Database().setup(config);
 
   /// Initialize Dox
+  Dox dox = Dox();
   dox.initialize(config);
-
-  /// Initialize Postgres connection
-  setupDatabaseConnection(config);
 
   /// register Ioc injector
   Ioc.register();
