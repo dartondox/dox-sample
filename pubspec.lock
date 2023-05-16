@@ -229,12 +229,12 @@ packages:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: def576178d96bd1806cfe9cbc0dea6268ef8f7799e44ba2db722c001cafa4e21
+      sha256: "6447336dd5e8af6cd5e64033a57226ee6f9bfb257ca7c9de4f1efabee5c16a4d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.16"
+    version: "0.0.17"
   dox_query_builder:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dox_query_builder
       sha256: b784e33928b26427a138347803ebf40d817da0cd2b251ca6e9e664869a48ccf5
@@ -434,7 +434,7 @@ packages:
     source: hosted
     version: "2.6.1"
   postgres_pool:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: postgres_pool
       sha256: "589b7aceb97e061db7e78aff6d6e988320aa2a43f232340b51aa2d9b922acacc"

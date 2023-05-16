@@ -1,52 +1,38 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_sample/config/di.dart';
-import 'package:dox_sample/models/admin/admin.model.dart';
-import 'package:dox_sample/services/admin.service.dart';
 
 class AdminController {
   /// GET /admins
   index(DoxRequest req) async {
-    return await Admin().all();
+    return 'GET /admins';
   }
 
   /// GET /admins/create
   create(DoxRequest req) {
-    return 'admin create view';
+    return 'GET /admins/create';
   }
 
   /// POST /admins
   store(DoxRequest req) async {
-    try {
-      var service = inject<AdminService>();
-      var email = req.input('email');
-      var password = req.input('password');
-      if (email != null && password != null) {
-        return await service.createAdmin(email, password);
-      }
-    } catch (error) {
-      return InternalErrorException(message: error.toString());
-    }
+    return 'POST /admins';
   }
 
   /// GET /admins/{id}
   show(DoxRequest req, String id) async {
-    return await Admin().find(id);
+    return 'GET /admins/{id}';
   }
 
   /// GET /admins/{id}/edit
   edit(DoxRequest req, String id) async {
-    await Admin().find(id);
-    return 'show edit view';
+    return 'GET /admins/{id}/edit';
   }
 
   /// PUT|PATCH /admins/{id}
   update(DoxRequest req, String id) async {
-    await Admin().where('id', id).update({'name': req.body['name']});
-    return await Admin().newQuery.find(id);
+    return 'PUT|PATCH /admins/{id}';
   }
 
   /// DELETE /admins/{id}
   destroy(DoxRequest req, String id) async {
-    return await Admin().where('id', id).delete();
+    return 'DELETE /admins/{id}';
   }
 }
