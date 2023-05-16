@@ -51,15 +51,17 @@ class AdminGenerator extends Model<Admin> {
   @override
   Map<String, dynamic> convertToMap(i) {
     Admin instance = i as Admin;
-    return {
+    Map<String, dynamic> map = {
       'id': instance.id,
       'name': instance.name,
       'status': instance.status,
       'email': instance.email,
-      'password': Admin.hashPassword(instance.password),
+      'password': instance.password,
       'deleted_at': instance.deletedAt?.toIso8601String(),
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
+    map['password'] = Admin.hashPassword(map);
+    return map;
   }
 }

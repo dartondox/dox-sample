@@ -22,7 +22,7 @@ class Admin extends AdminGenerator with SoftDeletes {
   @Column(name: 'deleted_at')
   DateTime? deletedAt;
 
-  static hashPassword(data) {
-    return Hash.make(data);
+  static hashPassword(Map<String, dynamic> data) {
+    return Hash.make(data['password']);
   }
 }
