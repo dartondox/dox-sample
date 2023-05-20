@@ -1,5 +1,5 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_sample/exception/handler.dart';
+import 'package:dox_sample/http/handler.dart';
 import 'package:dox_sample/routes/api.dart';
 import 'package:dox_sample/routes/web.dart';
 
@@ -27,7 +27,7 @@ class Config implements AppConfig {
       );
 
   @override
-  ExceptionHandler get exceptionHandler => ResponseExceptionHandler();
+  Handler get responseHandler => ResponseHandler();
 
   @override
   List<Router> get routers => [WebRouter(), ApiRouter()];
