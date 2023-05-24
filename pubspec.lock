@@ -229,10 +229,10 @@ packages:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: cdd13d149fe05fe7a18e920477ef2e6150ca89e79192fb8f3ac3cb2af7e59467
+      sha256: "135721dcfa825bd29b93667b7d91e689220422cdcd902499bda8aa2e39baa8c5"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0-alpha.0"
+    version: "1.0.0-alpha.1"
   dox_query_builder:
     dependency: "direct main"
     description:
@@ -545,6 +545,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  sprintf:
+    dependency: transitive
+    description:
+      name: sprintf
+      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:
@@ -633,6 +641,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.7"
   vm_service:
     dependency: transitive
     description:
