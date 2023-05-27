@@ -7,7 +7,7 @@ environment:
 dependencies:
   dox_core: ^1.0.0-alpha.1
   postgres_pool: ^2.1.6
-  dox_query_builder: ^1.1.7
+  dox_query_builder: ^1.1.9
 
 dev_dependencies:
   dox_builder: ^0.0.5

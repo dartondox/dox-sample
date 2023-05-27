@@ -237,10 +237,10 @@ packages:
     dependency: "direct main"
     description:
       name: dox_query_builder
-      sha256: d010b4d34a07bda338bf77b168c24149531b73d219a8b2f2aab6402b3bfda884
+      sha256: e74795f3534fc942151a43fefeeac2878f52958c9733df2bea56f8d2669d96a8
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.7"
+    version: "1.1.9"
   encrypt:
     dependency: transitive
     description:
