@@ -1,14 +1,29 @@
 import 'package:dox_core/dox_core.dart';
+import 'package:dox_core/middleware/log_middleware.dart';
 import 'package:dox_sample/http/handler.dart';
 import 'package:dox_sample/routes/api.dart';
 import 'package:dox_sample/routes/web.dart';
 
-class Config implements AppConfig {
+class Config extends AppConfig {
   @override
   String get appKey => Env.get('APP_KEY');
 
   @override
   int get serverPort => int.parse(Env.get('APP_PORT', 3000));
+
+  @override
+  Map<Type, Function()> get formRequests => {};
+
+  @override
+  List get globalMiddleware => [
+        LogMiddleware(),
+      ];
+
+  @override
+  List<Router> get routers => [
+        WebRouter(),
+        ApiRouter(),
+      ];
 
   @override
   DBConfig get dbConfig => DBConfig(
@@ -28,7 +43,4 @@ class Config implements AppConfig {
 
   @override
   Handler get responseHandler => ResponseHandler();
-
-  @override
-  List<Router> get routers => [WebRouter(), ApiRouter()];
 }
