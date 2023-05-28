@@ -1,5 +1,4 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_core/middleware/log_middleware.dart';
 import 'package:dox_sample/http/controllers/admin.controller.dart';
 import 'package:dox_sample/http/controllers/api.controller.dart';
 
@@ -8,7 +7,7 @@ class ApiRouter extends Router {
   String get prefix => 'api';
 
   @override
-  List get middleware => [LogMiddleware()];
+  List get middleware => [];
 
   @override
   register() {

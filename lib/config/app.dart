@@ -1,4 +1,5 @@
 import 'package:dox_core/dox_core.dart';
+import 'package:dox_core/middleware/log_middleware.dart';
 import 'package:dox_sample/http/handler.dart';
 import 'package:dox_sample/routes/api.dart';
 import 'package:dox_sample/routes/web.dart';
@@ -14,7 +15,15 @@ class Config extends AppConfig {
   Map<Type, Function()> get formRequests => {};
 
   @override
-  List<Router> get routers => [WebRouter(), ApiRouter()];
+  List get globalMiddleware => [
+        LogMiddleware(),
+      ];
+
+  @override
+  List<Router> get routers => [
+        WebRouter(),
+        ApiRouter(),
+      ];
 
   @override
   DBConfig get dbConfig => DBConfig(
