@@ -5,8 +5,8 @@ import 'package:postgres_pool/postgres_pool.dart';
 class Database {
   late PgPool pool;
 
-  setup(AppConfig appConfig) {
-    var config = appConfig.dbConfig;
+  void setup(AppConfig appConfig) {
+    DBConfig config = appConfig.dbConfig;
     pool = PgPool(
       PgEndpoint(
         host: config.dbHost,

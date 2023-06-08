@@ -12,15 +12,15 @@ class Config extends AppConfig {
   int get serverPort => int.parse(Env.get('APP_PORT', 3000));
 
   @override
-  Map<Type, Function()> get formRequests => {};
+  Map<Type, Function()> get formRequests => <Type, Function()>{};
 
   @override
-  List get globalMiddleware => [
+  List<dynamic> get globalMiddleware => <dynamic>[
         LogMiddleware(),
       ];
 
   @override
-  List<Router> get routers => [
+  List<Router> get routers => <Router>[
         WebRouter(),
         ApiRouter(),
       ];

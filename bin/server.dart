@@ -7,7 +7,7 @@ void main() async {
 
   /// Initialize Dox
   Dox dox = Dox();
-  dox.initialize(config);
+  await dox.initialize(config);
 
   /// Initialize Postgres connection
   Database().setup(config);

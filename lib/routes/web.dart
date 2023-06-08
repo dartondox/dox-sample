@@ -3,10 +3,10 @@ import 'package:dox_sample/http/controllers/web.controller.dart';
 
 class WebRouter extends Router {
   @override
-  List get middleware => [];
+  List<dynamic> get middleware => <dynamic>[];
 
   @override
-  register() {
+  void register() {
     WebController web = WebController();
 
     Route.get('/ping', web.pong);

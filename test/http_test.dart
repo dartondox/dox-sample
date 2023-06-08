@@ -9,9 +9,9 @@ String baseUrl = 'http://localhost:${config.serverPort}';
 
 void main() {
   setUpAll(() async {
-    Dox().initialize(config);
+    await Dox().initialize(config);
     Database().setup(config);
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future<dynamic>.delayed(Duration(milliseconds: 500));
   });
 
   tearDownAll(() {
@@ -19,8 +19,8 @@ void main() {
   });
 
   test('ping route', () async {
-    var url = Uri.parse('$baseUrl/ping');
-    var response = await http.get(url);
+    Uri url = Uri.parse('$baseUrl/ping');
+    http.Response response = await http.get(url);
     expect(response.statusCode, 200);
     expect(response.body, 'pong');
   });
