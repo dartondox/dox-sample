@@ -10,7 +10,7 @@ dependencies:
   dox_query_builder: ^1.1.11
 
 dev_dependencies:
-  dox_builder: ^1.0.0
+  dox_builder: ^1.0.1
   build_runner: ^2.3.3
   lints: ^2.0.0
   test: ^1.21.0
