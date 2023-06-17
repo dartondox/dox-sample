@@ -221,10 +221,10 @@ packages:
     dependency: "direct dev"
     description:
       name: dox_builder
-      sha256: "7945b0625f91b896a75436a1abd4ec43da37b383e553ebe96ba3ed1cf9bc5acf"
+      sha256: "7536589710caf29c0349d4a756c5820bc8e71e52319f5e485d5d5d6cab076b50"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   dox_core:
     dependency: "direct main"
     description:
