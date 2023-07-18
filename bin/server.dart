@@ -11,4 +11,7 @@ void main() async {
 
   /// Initialize Postgres connection
   Database().setup(config);
+
+  /// run migration
+  await Database().migrate();
 }
