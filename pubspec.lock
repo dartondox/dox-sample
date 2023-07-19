@@ -193,14 +193,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
-  dart_dotenv:
-    dependency: transitive
-    description:
-      name: dart_dotenv
-      sha256: "299c2b0358e4d1d50f0468c00f17ab206c770eb6380d1e3c1b9098b6d2ba7dbf"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   dart_style:
     dependency: transitive
     description:
@@ -229,18 +221,18 @@ packages:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: "8cdb8e310205be8e95a2304912cabf0003e4dcabc6a940a978db06a33a495021"
+      sha256: "13b8bcd230b5f350e9d96465acd07d8480cebba53a048e3a56c44c630413a645"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.5"
+    version: "1.0.6"
   dox_migration:
     dependency: "direct main"
     description:
       name: dox_migration
-      sha256: b925dfc4051e6fc71e086c2a3f53eeae11f4f8b387be55a8094e0fadb997b47f
+      sha256: "7536058a692f541936d72093629af76f63aa3062ab391fe45b5d457ddd23c210"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   dox_query_builder:
     dependency: "direct main"
     description:

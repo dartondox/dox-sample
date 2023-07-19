@@ -5,10 +5,10 @@ environment:
   sdk: '>=2.19.0 <4.0.0'
 
 dependencies:
-  dox_core: ^1.0.5
+  dox_core: ^1.0.6
   postgres_pool: ^2.1.6
   dox_query_builder: ^1.1.13
-  dox_migration: ^1.0.3
+  dox_migration: ^1.0.4
 
 dev_dependencies:
   dox_builder: ^1.0.1

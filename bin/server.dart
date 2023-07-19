@@ -5,13 +5,14 @@ import 'package:dox_sample/config/database.dart';
 void main() async {
   Config config = Config();
 
-  /// Initialize Dox
   Dox dox = Dox();
-  await dox.initialize(config);
 
   /// Initialize Postgres connection
   Database().setup(config);
 
   /// run migration
   await Database().migrate();
+
+  /// Initialize Dox server
+  await dox.initialize(config);
 }
