@@ -1,8 +1,8 @@
 import 'package:dox_core/dox_core.dart';
 
-class ResponseHandler extends Handler {
+class ResponseHandler extends ResponseHandlerInterface {
   @override
   dynamic handle(DoxResponse res) {
-    /// add your logic here
+    /// write your logic here
   }
 }
