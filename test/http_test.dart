@@ -3,12 +3,11 @@ import 'package:dox_sample/config/app.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
-Config config = Config();
-String baseUrl = 'http://localhost:${config.serverPort}';
+String baseUrl = 'http://localhost:${appConfig.serverPort}';
 
 void main() {
   setUpAll(() async {
-    Dox().initialize(config);
+    Dox().initialize(appConfig);
     await Dox().startServer();
     await Future<dynamic>.delayed(Duration(milliseconds: 500));
   });

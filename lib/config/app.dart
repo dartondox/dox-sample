@@ -1,33 +1,47 @@
 import 'package:dox_core/dox_core.dart';
+import 'package:dox_sample/config/cache.dart';
+import 'package:dox_sample/config/cors.dart';
+import 'package:dox_sample/config/services.dart';
+import 'package:dox_sample/config/storage.dart';
 import 'package:dox_sample/http/response_handler.dart';
 import 'package:dox_sample/routes/api.dart';
 import 'package:dox_sample/routes/web.dart';
 
-class Config extends AppConfig {
-  @override
-  int get totalIsolate => 3;
+AppConfig appConfig = AppConfig(
+  /// application key,
+  /// this key is use to encrypt/decrypt cache data and cookies.
+  appKey: Env.get<String>('APP_KEY'),
 
-  @override
-  String get appKey => Env.get('APP_KEY');
+  /// application server port
+  serverPort: Env.get<int>('APP_PORT', 3000),
 
-  @override
-  int get serverPort => int.parse(Env.get('APP_PORT', 3000));
+  /// total multi-thread isolate to run
+  totalIsolate: Env.get<int>('APP_TOTAL_ISOLATE', 1),
 
-  @override
-  Map<Type, Function()> get formRequests => <Type, Function()>{};
+  /// form requests
+  formRequests: <Type, FormRequest Function()>{},
 
-  @override
-  List<dynamic> get globalMiddleware => <dynamic>[];
+  /// global middleware
+  globalMiddleware: <dynamic>[],
 
-  @override
-  List<Router> get routers => <Router>[
-        WebRouter(),
-        ApiRouter(),
-      ];
+  /// routers
+  routers: <Router>[
+    WebRouter(),
+    ApiRouter(),
+  ],
 
-  @override
-  CORSConfig get cors => CORSConfig();
+  /// response handler
+  responseHandler: ResponseHandler(),
 
-  @override
-  ResponseHandlerInterface get responseHandler => ResponseHandler();
-}
+  /// cache driver configuration
+  cache: cache,
+
+  /// file storage driver configuration
+  fileStorage: storage,
+
+  /// cors configuration
+  cors: cors,
+
+  /// service to run on multithread server
+  services: services,
+);
