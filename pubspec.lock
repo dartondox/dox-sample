@@ -229,10 +229,10 @@ packages:
     dependency: "direct main"
     description:
       name: dox_migration
-      sha256: "7536058a692f541936d72093629af76f63aa3062ab391fe45b5d457ddd23c210"
+      sha256: "82f6270ab41f05278b1debd563ce47a7f6b0702a373081a33a1ddcda4c76cd2e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "2.0.0-alpha.1"
   dox_query_builder:
     dependency: "direct main"
     description:

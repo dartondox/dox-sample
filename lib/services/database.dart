@@ -1,6 +1,6 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_migration/dox_migration.dart';
 import 'package:dox_query_builder/dox_query_builder.dart';
+import 'package:dox_sample/config/postgres.dart';
 import 'package:postgres_pool/postgres_pool.dart';
 
 class Database implements DoxService {
@@ -11,24 +11,14 @@ class Database implements DoxService {
 
   late PgPool pool;
 
-  late PgEndpoint endPoint;
-
   bool debug = false;
 
   int concurrency = 10;
 
   @override
   Future<void> setup() async {
-    Database().endPoint = PgEndpoint(
-      host: Env.get('DB_HOST', 'localhost'),
-      port: int.parse(Env.get('DB_PORT', '5432')),
-      database: Env.get('DB_NAME', 'dox'),
-      username: Env.get('DB_USERNAME', 'postgres'),
-      password: Env.get('DB_PASSWORD', 'postgres'),
-    );
-
     Database().pool = PgPool(
-      Database().endPoint,
+      postgresEndpoint,
       settings: PgPoolSettings()
         ..maxConnectionAge = Duration(hours: 1)
         ..concurrency = concurrency,
@@ -44,9 +34,5 @@ class Database implements DoxService {
       debug: debug,
       printer: ConsoleQueryPrinter(),
     );
-  }
-
-  Future<void> migrate() async {
-    await Migration().migrate();
   }
 }
