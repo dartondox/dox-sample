@@ -1,5 +1,5 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_sample/http/controllers/web.controller.dart';
+import 'package:dox_sample/app/http/controllers/web.controller.dart';
 
 class WebRouter extends Router {
   @override
@@ -7,8 +7,6 @@ class WebRouter extends Router {
 
   @override
   void register() {
-    WebController web = WebController();
-
-    Route.get('/ping', web.pong);
+    Route.get('/ping', webController.pong);
   }
 }

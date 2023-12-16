@@ -17,3 +17,18 @@ PgEndpoint postgresEndpoint = PgEndpoint(
   /// database password
   password: Env.get('DB_PASSWORD', 'postgres'),
 );
+
+/// postgres pool connection configuration
+PgPool pool = PgPool(
+  postgresEndpoint,
+
+  /// postgres setting
+  settings: PgPoolSettings()
+
+    /// The maximum duration a connection is kept open.
+    /// New sessions won't be scheduled after this limit is reached.
+    ..maxConnectionAge = Duration(hours: 1)
+
+    /// The maximum number of concurrent sessions.
+    ..concurrency = 10,
+);

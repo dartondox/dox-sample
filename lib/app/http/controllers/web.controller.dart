@@ -5,3 +5,5 @@ class WebController {
     return 'pong';
   }
 }
+
+WebController webController = WebController();

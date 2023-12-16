@@ -1,5 +1,5 @@
 import 'package:dox_core/dox_core.dart';
-import 'package:dox_sample/http/controllers/api.controller.dart';
+import 'package:dox_sample/app/http/controllers/api.controller.dart';
 
 class ApiRouter extends Router {
   @override
@@ -10,8 +10,6 @@ class ApiRouter extends Router {
 
   @override
   void register() {
-    ApiController api = ApiController();
-
-    Route.get('/ping', api.pong);
+    Route.get('/ping', apiController.pong);
   }
 }

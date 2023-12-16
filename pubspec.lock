@@ -205,26 +205,26 @@ packages:
     dependency: transitive
     description:
       name: dox_annotation
-      sha256: d80a0320140b24b6e8e7eaa4e2b872e316894c2c13f5cb28efa048e9ea7128e1
+      sha256: f0eba5d9f36e638bf73036fa767909989406ab7246e326afe4c0d524cfd27160
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.5-alpha1.9"
+    version: "1.0.5-alpha2.0"
   dox_builder:
     dependency: "direct dev"
     description:
       name: dox_builder
-      sha256: "5843df761a96c60c86321dc6f0de4c4df46277b996ff7272de154e28396ab3e3"
+      sha256: "6012bf357fa84a86e617e04eddb5b4efbed3916568c9e45d27e34f92027ffbbe"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   dox_core:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: d1c66897eb6afcec138f9af0b1a3b93538168360a084a4cf5a399dd63c2dc138
+      sha256: "1482e8e14a94dd5f59b3fd080f1d7748ae7cdf091be85d206597b58a54b0b3af"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.3"
+    version: "2.0.0-alpha.4"
   dox_migration:
     dependency: "direct main"
     description:
@@ -237,10 +237,10 @@ packages:
     dependency: "direct main"
     description:
       name: dox_query_builder
-      sha256: "3462b8132fa96aa139c9fd94e878ca0aee5751e70fd61d7cc916ec23ef092118"
+      sha256: "5c89abe858c3d94ec298d0a007a870d139c18b32ce540df3f8cf615e8e532dd2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.15"
+    version: "1.1.16"
   encrypt:
     dependency: transitive
     description:

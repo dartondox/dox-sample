@@ -5,3 +5,5 @@ class ApiController {
     return 'pong';
   }
 }
+
+ApiController apiController = ApiController();
