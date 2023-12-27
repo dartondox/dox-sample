@@ -6,7 +6,7 @@ environment:
 
 dependencies:
   dox_core: 2.0.0-alpha.5
-  postgres: ^3.0.4
+  postgres: ^3.0.5
   dox_query_builder: ^2.0.0-alpha.1
   dox_migration: ^2.0.0-alpha.2
 
@@ -15,4 +15,4 @@ dev_dependencies:
   build_runner: ^2.3.3
   lints: ^2.0.0
   test: ^1.21.0
-  http: ^1.0.0
+  http: ^1.1.2
