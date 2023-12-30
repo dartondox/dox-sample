@@ -4,11 +4,15 @@ services:
 
   # Http server
   dox:
-    build: .
-    hostname: dox
+    build:
+      context: .
+      target: ${APP_ENV}
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/.dart_tool
     ports:
-      # export:internal
-      - "3001:3000"
+      - "${APP_PORT}:${APP_PORT}"
     depends_on:
       postgres:
         condition: service_healthy
@@ -17,13 +21,16 @@ services:
   postgres:
     image: postgres:14.1
     environment: 
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    expose:
+      - ${DB_PORT}
     ports:
-      - "3002:5432"
+      - "${DB_PORT}:${DB_PORT}"
+    command: -p ${DB_PORT}
     restart: always
     healthcheck:
-      test: ['CMD', 'pg_isready', '-q', '-U', 'postgres']
+      test: ['CMD', 'pg_isready', '-q', '-U', 'postgres', '-p', '${DB_PORT}']
       interval: 5s
       retries: 5
