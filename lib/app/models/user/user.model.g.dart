@@ -8,7 +8,7 @@ part of 'user.model.dart';
 
 // ignore_for_file: always_specify_types
 
-class UserGenerator extends Model<User> {
+class UserGenerator extends Model<User> with SoftDeletes<User> {
   @override
   String get primaryKey => 'id';
 
@@ -25,7 +25,15 @@ class UserGenerator extends Model<User> {
   User query() => User();
 
   @override
-  List<String> get tableColumns => <String>['id', 'created_at', 'updated_at'];
+  List<String> get tableColumns => <String>[
+        'id',
+        'name',
+        'email',
+        'password',
+        'deleted_at',
+        'created_at',
+        'updated_at'
+      ];
 
   @override
   List<String> get preloadList => <String>[];
@@ -39,6 +47,10 @@ class UserGenerator extends Model<User> {
   @override
   User fromMap(Map<String, dynamic> m) => User()
     ..id = m['id'] as int?
+    ..name = m['name'] as String?
+    ..email = m['email'] as String?
+    ..password = m['password'] as String?
+    ..deletedAt = m['deleted_at'] as String?
     ..createdAt = m['created_at'] == null
         ? null
         : DateTime.parse(m['created_at'] as String)
@@ -51,6 +63,10 @@ class UserGenerator extends Model<User> {
     User instance = i as User;
     Map<String, dynamic> map = <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
+      'email': instance.email,
+      'password': instance.password,
+      'deleted_at': instance.deletedAt,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
