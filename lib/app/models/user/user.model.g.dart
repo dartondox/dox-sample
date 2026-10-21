@@ -14,9 +14,12 @@ class UserGenerator extends Model<User> with SoftDeletes<User> {
 
   @override
   Map<String, dynamic> get timestampsColumn => <String, dynamic>{
-        'created_at': 'created_at',
-        'updated_at': 'updated_at',
-      };
+    'created_at': 'created_at',
+    'updated_at': 'updated_at',
+  };
+
+  @override
+  String get tableName => 'users';
 
   int? get id => tempIdValue;
 
@@ -26,14 +29,13 @@ class UserGenerator extends Model<User> with SoftDeletes<User> {
 
   @override
   List<String> get tableColumns => <String>[
-        'id',
-        'name',
-        'email',
-        'password',
-        'deleted_at',
-        'created_at',
-        'updated_at'
-      ];
+    'id',
+    'name',
+    'email',
+    'password',
+    'created_at',
+    'updated_at',
+  ];
 
   @override
   List<String> get preloadList => <String>[];
@@ -50,7 +52,6 @@ class UserGenerator extends Model<User> with SoftDeletes<User> {
     ..name = m['name'] as String?
     ..email = m['email'] as String?
     ..password = m['password'] as String?
-    ..deletedAt = m['deleted_at'] as String?
     ..createdAt = m['created_at'] == null
         ? null
         : DateTime.parse(m['created_at'] as String)
@@ -66,7 +67,6 @@ class UserGenerator extends Model<User> with SoftDeletes<User> {
       'name': instance.name,
       'email': instance.email,
       'password': instance.password,
-      'deleted_at': instance.deletedAt,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };

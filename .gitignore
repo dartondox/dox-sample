@@ -3,3 +3,4 @@
 .env
 bin/server
 storage/cache
+build/

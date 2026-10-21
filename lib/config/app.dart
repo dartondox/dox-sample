@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dox_core/dox_core.dart';
 import 'package:dox_sample/app/http/response_handler.dart';
 import 'package:dox_sample/config/cache.dart';
@@ -26,11 +28,10 @@ AppConfig appConfig = AppConfig(
 
   /// Total isolate (multi thread)
   /// -------------------------------
-  /// Total isolate to run the application.
-  /// Depending on your machine CPU and RAM, you can adjust the the number
-  /// of isolates. The more isolate application have, the more it can handle
-  /// concurrency requests.
-  totalIsolate: Env.get<int>('APP_TOTAL_ISOLATE', 3),
+  /// Isolates that serve http requests, all on the same port.
+  /// Default is one per CPU core, so the app uses all cores.
+  /// Set `APP_TOTAL_ISOLATE` to change it.
+  totalIsolate: Env.get<int>('APP_TOTAL_ISOLATE', Platform.numberOfProcessors),
 
   /// Form requests
   /// -------------------------------
@@ -46,17 +47,12 @@ AppConfig appConfig = AppConfig(
   /// -------------------------------
   /// By registering global middleware here,
   /// middleware will be applied to all the routes.
-  globalMiddleware: <dynamic>[
-    LogMiddleware(enabled: true),
-  ],
+  globalMiddleware: <dynamic>[LogMiddleware(enabled: true)],
 
   /// Routers
   /// -------------------------------
   /// Register routers to create route to dox framework.
-  routers: <Router>[
-    WebRouter(),
-    ApiRouter(),
-  ],
+  routers: <Router>[WebRouter(), ApiRouter()],
 
   /// Response handler
   responseHandler: ResponseHandler(),

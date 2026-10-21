@@ -1,9 +1,11 @@
 .dockerignore
 Dockerfile
+docker-compose.yml
 build/
 .dart_tool/
 .git/
 .github/
 .gitignore
 .idea/
-.packages
+.env
+storage/

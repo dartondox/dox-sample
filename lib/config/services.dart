@@ -6,6 +6,4 @@ import 'package:dox_sample/services/orm_service.dart';
 /// Since dox run on multi thread isolate, we need to register
 /// below extra services to dox so that dox can
 /// register again on new isolate.
-List<DoxService> services = <DoxService>[
-  ORMService(),
-];
+List<DoxService> services = <DoxService>[ORMService()];

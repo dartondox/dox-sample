@@ -1,11 +1,11 @@
-import 'package:dox_query_builder/dox_query_builder.dart';
+import 'package:dox_orm/dox_orm.dart';
 
 part 'user.model.g.dart';
 
-@DoxModel(softDelete: true)
+@DoxModel(table: 'users', softDelete: true)
 class User extends UserGenerator {
   @override
-  List<String> get hidden => <String>[];
+  List<String> get hidden => <String>['password'];
 
   @Column()
   String? name;
@@ -15,7 +15,4 @@ class User extends UserGenerator {
 
   @Column()
   String? password;
-
-  @Column()
-  String? deletedAt;
 }
