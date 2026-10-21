@@ -33,16 +33,6 @@ AppConfig appConfig = AppConfig(
   /// Set `APP_TOTAL_ISOLATE` to change it.
   totalIsolate: Env.get<int>('APP_TOTAL_ISOLATE', Platform.numberOfProcessors),
 
-  /// Form requests
-  /// -------------------------------
-  /// Register form request to dox in order to inject into the controller.
-  /// Example,
-  /// {
-  ///   BlogRequest : () => BlogRequest(),
-  ///   UserRequest : () => UserRequest(),
-  /// }
-  formRequests: <Type, FormRequest Function()>{},
-
   /// Global middleware
   /// -------------------------------
   /// By registering global middleware here,
@@ -57,11 +47,11 @@ AppConfig appConfig = AppConfig(
   /// Response handler
   responseHandler: ResponseHandler(),
 
-  /// Cache driver configuration
+  /// Cache stores (config/cache.dart)
   cache: cache,
 
-  /// File storage driver configuration
-  fileStorage: storage,
+  /// Storage disks (config/storage.dart)
+  storage: storage,
 
   /// Cors configuration
   cors: cors,

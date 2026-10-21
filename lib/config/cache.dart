@@ -1,10 +1,15 @@
-import 'package:dox_core/cache/drivers/file/file_cache_driver.dart';
 import 'package:dox_core/dox_core.dart';
 
+/// Cache stores
+/// -------------------------------
+/// `Cache()` uses the default store. `Cache().store('memory')` picks one.
+/// Drivers: file, memory, redis, null. Values must be JSON types.
 CacheConfig cache = CacheConfig(
-  /// default cache driver
-  defaultDriver: Env.get('CACHE_DRIVER', 'file'),
+  defaultStore: Env.get('CACHE_STORE', 'file'),
+  stores: <String, Map<String, dynamic>>{
+    'file': <String, dynamic>{'driver': 'file', 'path': 'storage/cache'},
 
-  /// register cache driver list
-  drivers: <String, CacheDriverInterface>{'file': FileCacheDriver()},
+    /// one map per isolate, fast, not shared
+    'memory': <String, dynamic>{'driver': 'memory', 'max_size': 10000},
+  },
 );
