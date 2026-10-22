@@ -4,3 +4,5 @@
 bin/server
 storage/cache
 build/
+*.sqlite
+*.sqlite-journal
