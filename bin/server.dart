@@ -3,14 +3,17 @@ import 'package:dox_migration/dox_migration.dart';
 import 'package:dox_sample/config/app.dart';
 import 'package:dox_sample/config/database.dart';
 
+import '../db/migration/migrations.dart';
+
 void main() async {
   /// Initialize Dox
   Dox().initialize(appConfig);
 
-  /// Run database migrations once, before the server starts.
-  /// We pass a connection from config/database.dart, so the
-  /// migration also works with env variables and no `.env` file.
+  /// Run the migrations from db/migration/migrations.dart once, before
+  /// the server starts. We pass a connection from config/database.dart,
+  /// so this also works with env variables and no `.env` file.
   await Migrator(
+    migrations: migrations,
     connection: await databaseConfig
         .getConnectionConfig()
         .getDatabaseConnection(),
