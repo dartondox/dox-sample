@@ -16,8 +16,8 @@ You need **Dart 3.13** or newer.
 ## Quick start
 
 ```bash
-dart pub global activate dox 3.0.0-alpha.4
-dox create my_app --version 3.0.0-alpha.4
+dart pub global activate dox ^3.0.0-alpha
+dox create my_app
 cd my_app
 cp .env.example .env
 dart pub get
