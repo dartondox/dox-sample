@@ -5,12 +5,12 @@ environment:
   sdk: ^3.13.0
 
 dependencies:
-  dox_core: ^3.0.0-alpha.5
-  dox_orm: ^3.0.0-alpha.5
-  dox_migration: ^3.0.0-alpha.5
+  dox_core: ^3.0.0-alpha.6
+  dox_orm: ^3.0.0-alpha.6
+  dox_migration: ^3.0.0-alpha.6
 
 dev_dependencies:
-  dox_builder: ^3.0.0-alpha.5
+  dox_builder: ^3.0.0-alpha.6
   build_runner: ^2.4.13
   lints: ^6.1.0
   test: ^1.26.3
