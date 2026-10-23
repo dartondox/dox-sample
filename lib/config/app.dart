@@ -9,6 +9,7 @@ import 'package:dox_sample/config/services.dart';
 import 'package:dox_sample/config/storage.dart';
 import 'package:dox_sample/routes/api.dart';
 import 'package:dox_sample/routes/web.dart';
+import 'package:dox_sample/config/env.dart';
 
 AppConfig appConfig = AppConfig(
   /// Application secret key
@@ -19,19 +20,19 @@ AppConfig appConfig = AppConfig(
   /// Note: Changing the application key for an existing app will make all
   /// the cookies and cache invalid and also the existing encrypted data
   /// will not be decrypted.
-  appKey: Env.get<String>('APP_KEY'),
+  appKey: env.appKey,
 
   /// Server port
   /// -------------------------------
   /// App will be running on this port.
-  serverPort: Env.get<int>('APP_PORT', 3000),
+  serverPort: env.appPort,
 
   /// Total isolate (multi thread)
   /// -------------------------------
   /// Isolates that serve http requests, all on the same port.
   /// Default is one per CPU core, so the app uses all cores.
   /// Set `APP_TOTAL_ISOLATE` to change it.
-  totalIsolate: Env.get<int>('APP_TOTAL_ISOLATE', Platform.numberOfProcessors),
+  totalIsolate: env.appTotalIsolate ?? Platform.numberOfProcessors,
 
   /// Global middleware
   /// -------------------------------

@@ -1,25 +1,25 @@
-import 'package:dox_core/dox_core.dart';
 import 'package:dox_orm/dox_orm.dart';
+import 'package:dox_sample/config/env.dart';
 
 /// Print every SQL query only in development.
 /// Printing each query costs time, so it is off in production.
-bool _debug = Env.get('APP_ENV') == 'development';
+bool _debug = env.isDevelopment;
 
 DatabaseConfig databaseConfig = DatabaseConfig(
   /// Connection
   /// -------------------------------
   /// The connection to use. It is one key of `connections` below.
-  connection: Env.get('DB_CONNECTION', 'postgres'),
+  connection: env.dbConnection,
 
   connections: <String, ConnectionConfig>{
     /// Postgres
     'postgres': ConnectionConfig(
       driver: Driver.postgres,
-      host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get<int>('DB_PORT', 5432),
-      user: Env.get('DB_USERNAME', 'postgres'),
-      password: Env.get('DB_PASSWORD', 'postgres'),
-      database: Env.get('DB_NAME', 'dox'),
+      host: env.dbHost,
+      port: env.dbPort ?? 5432,
+      user: env.dbUsername,
+      password: env.dbPassword,
+      database: env.dbName,
       extra: <String, dynamic>{
         /// Each isolate has its own pool.
         'maxConnectionCount': 10,
@@ -32,11 +32,11 @@ DatabaseConfig databaseConfig = DatabaseConfig(
     /// MySQL and MariaDB
     'mysql': ConnectionConfig(
       driver: Driver.mysql,
-      host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get<int>('DB_PORT', 3306),
-      user: Env.get('DB_USERNAME', 'root'),
-      password: Env.get('DB_PASSWORD', 'password'),
-      database: Env.get('DB_NAME', 'dox'),
+      host: env.dbHost,
+      port: env.dbPort ?? 3306,
+      user: env.dbUsername,
+      password: env.dbPassword,
+      database: env.dbName,
       extra: <String, dynamic>{'collation': 'utf8mb4_general_ci'},
       debug: _debug,
       printer: PrettyQueryPrinter(),
@@ -45,7 +45,7 @@ DatabaseConfig databaseConfig = DatabaseConfig(
     /// SQLite. `DB_NAME` is a file path, or `:memory:`.
     'sqlite': ConnectionConfig(
       driver: Driver.sqlite,
-      database: Env.get('DB_NAME', 'dox.sqlite'),
+      database: env.dbName,
       debug: _debug,
       printer: PrettyQueryPrinter(),
     ),
