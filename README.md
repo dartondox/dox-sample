@@ -18,8 +18,7 @@ You need **Dart 3.13** or newer.
 ```bash
 dart pub global activate dox ^3.0.0-alpha
 dox create my_app
-cd my_app
-cp .env.example .env
+cd my_app                       # dox create made .env with a new APP_KEY
 dart pub get
 docker compose up -d postgres   # start the database
 dox s                           # dev server with hot reload, http://localhost:3000
