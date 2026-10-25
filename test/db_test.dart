@@ -6,11 +6,16 @@ import 'package:dox_sample/config/database.dart';
 import 'package:dox_sample/services/orm_service.dart';
 import 'package:test/test.dart';
 
-/// Needs the database from docker-compose.yml: `docker compose up -d postgres`
+import '../db/migration/migrations.dart';
+
+/// Uses the database of `.env` (SQLite by default, no setup needed).
 void main() {
   setUpAll(() async {
     Dox().initialize(appConfig);
-    await Migrator(config: databaseConfig.getConnectionConfig()).migrate();
+    await Migrator(
+      migrations: migrations,
+      config: databaseConfig.getConnectionConfig(),
+    ).migrate();
     await ORMService().setup();
   });
 
