@@ -10,7 +10,8 @@ import 'package:dox_sample/routes/web.dart' as i4;
 import 'package:dox_sample/services/orm_service.dart' as i5;
 import 'package:dox_sample/services/queue_service.dart' as i6;
 import 'package:dox_sample/services/schedule_service.dart' as i7;
-import 'package:dox_sample/app/models/user/user.model.dart' as i8;
+import 'package:dox_sample/services/storage_service.dart' as i8;
+import 'package:dox_sample/app/models/user/user.model.dart' as i9;
 
 /// Puts every class of the app into the container: the
 /// `@Inject()` classes, routers, services and model binders.
@@ -23,9 +24,10 @@ void registerContainer(IocContainer c) {
   c.service<i5.ORMService>((IocContainer c) => i5.ORMService());
   c.service<i6.AppQueueService>((IocContainer c) => i6.AppQueueService());
   c.service<i7.ScheduleService>((IocContainer c) => i7.ScheduleService());
-  c.bindModel<i8.User>((String id) {
+  c.service<i8.AppStorageService>((IocContainer c) => i8.AppStorageService());
+  c.bindModel<i9.User>((String id) {
     int? key = int.tryParse(id);
     if (key == null) return null;
-    return i8.User().find(key);
+    return i9.User().find(key);
   });
 }

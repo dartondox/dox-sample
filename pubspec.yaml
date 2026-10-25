@@ -10,6 +10,7 @@ dependencies:
   dox_migration: ^3.0.0-alpha.11
   dox_queue: ^3.0.0-alpha.3
   dox_scheduler: ^3.0.0-alpha.1
+  dox_storage: ^3.0.0-alpha.12
 
 dev_dependencies:
   dox_builder: ^3.0.0-alpha.11
