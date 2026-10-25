@@ -6,7 +6,7 @@ import 'package:dox_sample/config/cors.dart';
 import 'package:dox_sample/config/logger.dart';
 import 'package:dox_sample/config/storage.dart';
 import 'package:dox_sample/config/env.dart';
-import 'package:dox_sample/container.g.dart';
+import 'package:dox_sample/generated/container.g.dart';
 
 AppConfig appConfig = AppConfig(
   /// Application secret key
