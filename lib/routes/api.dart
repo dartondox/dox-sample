@@ -10,6 +10,6 @@ class ApiRouter extends Router {
 
   @override
   void register() {
-    Route.get<ApiController>('/ping', (ApiController c) => c.pong);
+    Route.get('/ping', (ApiController c) => c.pong);
   }
 }
