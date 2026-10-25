@@ -8,7 +8,7 @@
 
 ## Dox 3.x (alpha)
 
-This branch uses Dox `3.0.0-alpha.4`. It can still change before the stable release.
+This branch uses Dox `3.0.0-alpha.7`. It can still change before the stable release.
 Docs: https://dartondox.dev/latest/
 
 You need **Dart 3.13** or newer.

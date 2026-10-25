@@ -49,14 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-  buffer:
-    dependency: transitive
-    description:
-      name: buffer
-      sha256: "389da2ec2c16283c8787e0adaede82b1842102f8c8aae2f49003a766c5c6b3d1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.3"
   build:
     dependency: transitive
     description:
@@ -105,14 +97,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.13.0"
-  charcode:
-    dependency: transitive
-    description:
-      name: charcode
-      sha256: fb0f1107cac15a5ea6ef0a6ef71a807b9e4267c713bb93e00e92d737cc8dbd8a
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.4.0"
   checked_yaml:
     dependency: transitive
     description:
@@ -189,106 +173,106 @@ packages:
     dependency: transitive
     description:
       name: dox_annotation
-      sha256: dc19fc0a351f434a0f2cc657f85186f0dedfd874f6eaa1d802ed96ba1a54ad8e
+      sha256: "49a810c58401bcff2fff68ef2b14c572c97c5db1a20844b9a2129800c8a182e7"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_builder:
     dependency: "direct dev"
     description:
       name: dox_builder
-      sha256: "3d225c1e569bb881534945a905e790dae85f03d8b702eb7b2f5508f444a39453"
+      sha256: dd42726fe2d153dd00a60219b4d2384e19b496d19061a8270dd6fd1dbd43fbf8
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_cache:
     dependency: transitive
     description:
       name: dox_cache
-      sha256: "758e5efa86219928e5d1d125ce38fd4f440199c5e2259178bf1ad5bdaf698d09"
+      sha256: "0abac977a036b7d9c4d680c2aaa7136807f5999eb5d649fbf9c0ab52229b6705"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_core:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: "6ecab55f030fcd799fb74df0123c08b04eac8fb38ad9421bc60047038d67c209"
+      sha256: "9b2c11900ce810d232f5acc062c75065b2be07d5cdaa7c89b81d773eb676c178"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_http_native:
     dependency: transitive
     description:
       name: dox_http_native
-      sha256: bd858bd1902e58643147d0193d1145aaf3b30461781a2a672e79882c9f264bc9
+      sha256: "7806fb0d1d6ce8ca946ed83ba555222d0b5bd8a99bad4437b522c5b5d572c83c"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_migration:
     dependency: "direct main"
     description:
       name: dox_migration
-      sha256: "229399117b6e67ee118a654ef662d74042d31805e643d9e1aa27a9a6cdfd1cf0"
+      sha256: "35100e8366e0d8297e98d4323b627a35728c7c86e8e8d142dc6c48231d3f311d"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_mysql_native:
     dependency: transitive
     description:
       name: dox_mysql_native
-      sha256: "14fceb76429ca3d895739417de6fb7c255c738c6a48334036b886648e5dfebe2"
+      sha256: "0263fe0ddf13256597a4b05c3426b1840e65c5e0c9d2d39f70ddd112d887b399"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_openapi:
     dependency: transitive
     description:
       name: dox_openapi
-      sha256: c0e72fb298042cfcf629a0395ead3475e8f2031b6e8bd15e1781632adca9d8af
+      sha256: c6ce8fe8266ec28f0a7fc6ca64ad7edfd8d2fed12a534f383c32971a1ee70c9f
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_orm:
     dependency: "direct main"
     description:
       name: dox_orm
-      sha256: bbfc0abb2a25ce1f56e07fb32f9187a2cafe05fb4fb9bd45b3cdb7b3d9e3447d
+      sha256: "8437e27ec8e684901c19caaf6e722e8b93d55d60b7977cf76f5fba54f6b65786"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_postgres_native:
     dependency: transitive
     description:
       name: dox_postgres_native
-      sha256: "155e6004fcc904055f3594f5e63e9d915124a463516eace8056fc1c4721b657a"
+      sha256: "8c7898d1cbab823c48131e02a2899c462de72d34b2d96e003701f785ce203c6a"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_socketio:
     dependency: transitive
     description:
       name: dox_socketio
-      sha256: "45163f74fdfa8f580d287c8d19011284b64e8509501e84342606ed1a1235e232"
+      sha256: "1117f816d02a9d4d789c3523888107abea4c203d4806c294062068dec20bd025"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_storage:
     dependency: transitive
     description:
       name: dox_storage
-      sha256: "21ef2696a25897646af7e8b45e75c5a36ae80f6a0aed8433f3c46777ca17a549"
+      sha256: "3593b34ae91964685189845dced2845d76ffc3a94ee871b60e3313f2001bef79"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   dox_validation:
     dependency: transitive
     description:
       name: dox_validation
-      sha256: "025be361f1d77f45b3022e31c9d64e56f49e34aa9f4cdea0f25aca7e70e5d407"
+      sha256: b05e527c2de127234d6bbe3d19e40b60d26ab5c66e2e97fa6cee9993d57471ce
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.6"
+    version: "3.0.0-alpha.7"
   ffi:
     dependency: transitive
     description:
@@ -381,10 +365,10 @@ packages:
     dependency: transitive
     description:
       name: ioredis
-      sha256: "2456b59d72f287682a18b4ab924cd189da1114ddc7270668046991e27e3a32e8"
+      sha256: "47203df8f0b71b0f19f184e25fd91541426d1a154c322e2cb7a67c79e6754215"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0-alpha.3"
   json_annotation:
     dependency: transitive
     description:
@@ -433,14 +417,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  mysql_dart:
-    dependency: transitive
-    description:
-      name: mysql_dart
-      sha256: "39cd9ca5c7a0127251f15a5d5b9a8b2145f1553f16d029fff28d02f7139d8d7c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.1"
   native_toolchain_c:
     dependency: transitive
     description:
@@ -497,14 +473,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.3"
-  postgres:
-    dependency: transitive
-    description:
-      name: postgres
-      sha256: f2571f6f4256e94d87334d7189fcf28407500c34cd0ebcb74cff21fab5f4e988
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.5.20"
   process:
     dependency: transitive
     description:

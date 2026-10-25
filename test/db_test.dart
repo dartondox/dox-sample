@@ -10,11 +10,7 @@ import 'package:test/test.dart';
 void main() {
   setUpAll(() async {
     Dox().initialize(appConfig);
-    await Migrator(
-      connection: await databaseConfig
-          .getConnectionConfig()
-          .getDatabaseConnection(),
-    ).migrate();
+    await Migrator(config: databaseConfig.getConnectionConfig()).migrate();
     await ORMService().setup();
   });
 
