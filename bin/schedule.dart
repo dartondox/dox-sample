@@ -10,7 +10,7 @@ import 'package:dox_scheduler/dox_scheduler.dart';
 /// - run: run the tasks due this minute once (for a system cron).
 /// - list: show each task, its schedule and next run time.
 /// - test cleanup: run the task named cleanup now.
-/// the app services (like the database) start first.
+/// the app providers (like the database) start first.
 Future<void> main(List<String> args) async {
   exitCode = await SchedulerRunner(
     schedule: schedule,

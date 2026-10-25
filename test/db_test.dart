@@ -3,7 +3,7 @@ import 'package:dox_migration/dox_migration.dart';
 import 'package:dox_sample/app/models/user/user.model.dart';
 import 'package:dox_sample/config/app.dart';
 import 'package:dox_sample/config/database.dart';
-import 'package:dox_sample/services/orm_service.dart';
+import 'package:dox_sample/providers/orm_provider.dart';
 import 'package:test/test.dart';
 
 import '../db/migration/migrations.dart';
@@ -16,7 +16,7 @@ void main() {
       migrations: migrations,
       config: databaseConfig.getConnectionConfig(),
     ).migrate();
-    await ORMService().setup();
+    await ORMProvider().setup();
   });
 
   test('user model: save, find, soft delete', () async {

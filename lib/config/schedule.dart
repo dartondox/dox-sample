@@ -6,7 +6,7 @@ import 'package:dox_scheduler/dox_scheduler.dart';
 /// the default store. Use a Redis store when many servers run the
 /// schedule, so each task runs once per minute.
 /// `inProcess`: run the schedule inside the server
-/// (lib/services/schedule_service.dart). Off: run
+/// (lib/providers/schedule_provider.dart). Off: run
 /// `dart run bin/schedule.dart work` next to the server.
 ScheduleConfig scheduleConfig = const ScheduleConfig();
 

@@ -9,7 +9,4 @@ import 'package:dox_sample/generated/jobs.g.dart';
 /// `workInProcess`: true runs jobs inside the web server. Heavy jobs
 /// slow it down, so the default runs `dart run bin/queue.dart work`
 /// next to the server.
-QueueConfig queueConfig = QueueConfig(
-  driver: 'database',
-  jobs: jobRegistry,
-);
+QueueConfig queueConfig = QueueConfig(driver: 'database', jobs: jobRegistry);
