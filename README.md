@@ -1,8 +1,8 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/dartondox/assets/main/dox-logo.png" width="70" />
 </br></br>
-<div style="display:inliine-block">
-<img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" height="20"/> <img src="https://github.com/dartondox/dox-core/actions/workflows/test.yaml/badge.svg?branch=v1.x" height="20"/> <img src="https://img.shields.io/github/stars/dartondox/dox-core.svg" height="20"/> <img src="https://img.shields.io/github/forks/dartondox/dox-core.svg" height="20"/> <img src="https://img.shields.io/github/license/dartondox/dox-core.svg" height="20"/>
+<div style="display:inline-block">
+<img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" height="20"/> <img src="https://github.com/dartondox/dox/actions/workflows/test.yaml/badge.svg?branch=main" height="20"/> <img src="https://img.shields.io/github/stars/dartondox/dox.svg" height="20"/> <img src="https://img.shields.io/github/forks/dartondox/dox.svg" height="20"/> <img src="https://img.shields.io/github/license/dartondox/dox.svg" height="20"/>
 </div>
 </div>
 
@@ -20,9 +20,11 @@ dart pub global activate dox ^3.0.0-alpha
 dox create my_app
 cd my_app                       # dox create made .env with a new APP_KEY
 dart pub get
-docker compose up -d postgres   # start the database
 dox s                           # dev server with hot reload, http://localhost:3000
 ```
+
+The app uses SQLite (`db/dox.sqlite`), so it needs no database setup.
+For Postgres, run `docker compose up -d postgres` and set `DB_CONNECTION=postgres` and the `DB_*` keys in `.env`.
 
 Test the server:
 
@@ -32,21 +34,32 @@ curl http://localhost:3000/api/ping   # pong
 
 ## Migrations
 
-Migrations are `.sql` files in `db/migration`. The server runs new ones when it starts.
-You can also run them with the CLI:
+Migrations are Dart files in `db/migration`. Make one with `dox make:migration <name>`.
+The server runs new ones when it starts. You can also run them with the CLI:
 
 ```bash
 dox migration:run
 dox migration:rollback
 dox migration:refresh
+dox db:seed
+```
+
+## Queue and scheduler
+
+```bash
+dox make:job SendReport    # a job in lib/app/jobs
+dox queue:work             # run the jobs
+dox schedule:list          # the tasks of lib/config/schedule.dart
+dox schedule:work          # run the tasks on time
 ```
 
 ## Tests
 
 ```bash
-docker compose up -d postgres
 dart test
 ```
+
+The tests use the database of `.env`. For another SQLite file: `DB_NAME=test.sqlite dart test`.
 
 ## Production
 
@@ -56,6 +69,9 @@ Build a native (AOT) binary:
 ```bash
 dox build
 ```
+
+It makes `build/bundle` with three binaries: `bin/server`, `bin/queue` (the worker) and `bin/schedule` (the scheduler).
+Run the worker and the scheduler as their own processes, next to the server.
 
 Or use Docker. The image holds only the binary (about 12 MB), on `FROM scratch`.
 It has no `.env` file. Config comes from env variables. A real env variable wins over `.env`.

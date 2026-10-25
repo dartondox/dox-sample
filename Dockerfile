@@ -20,8 +20,15 @@ RUN dart run build_runner build --delete-conflicting-outputs
 # build hooks. Native libraries go to build/bundle/lib.
 RUN dart build cli --target bin/server.dart --output build
 
+# The queue worker and the scheduler are binaries too. They run as their
+# own processes: `/app/bin/queue work` and `/app/bin/schedule work`.
+RUN dart build cli --target bin/queue.dart --output build/queue \
+  && cp build/queue/bundle/bin/queue build/bundle/bin/ \
+  && dart build cli --target bin/schedule.dart --output build/schedule \
+  && cp build/schedule/bundle/bin/schedule build/bundle/bin/
+
 # Lay out the final file tree:
-# /app/bin/server, /app/lib (native libraries), /app/db/migration,
+# /app/bin/server, /app/bin/queue, /app/bin/schedule, /app/lib (native libraries), /app/db/migration,
 # /app/storage and a writable /tmp (uploads bigger than 1 MB are
 # streamed to a temp file).
 RUN mkdir -p /out/app/storage /out/tmp \
