@@ -4,11 +4,9 @@ import 'package:dox_core/dox_core.dart';
 import 'package:dox_sample/config/cache.dart';
 import 'package:dox_sample/config/cors.dart';
 import 'package:dox_sample/config/logger.dart';
-import 'package:dox_sample/config/services.dart';
 import 'package:dox_sample/config/storage.dart';
-import 'package:dox_sample/routes/api.dart';
-import 'package:dox_sample/routes/web.dart';
 import 'package:dox_sample/config/env.dart';
+import 'package:dox_sample/container.g.dart';
 
 AppConfig appConfig = AppConfig(
   /// Application secret key
@@ -42,10 +40,11 @@ AppConfig appConfig = AppConfig(
     LogMiddleware(enabled: env.appEnv != 'production'),
   ],
 
-  /// Routers
+  /// Container
   /// -------------------------------
-  /// Register routers to create route to dox framework.
-  routers: <Router>[WebRouter(), ApiRouter()],
+  /// Every @Inject class, router and service of the app,
+  /// from lib/container.g.dart (made by build_runner).
+  container: registerContainer,
 
   /// Cache stores (config/cache.dart)
   cache: cache,
@@ -55,9 +54,6 @@ AppConfig appConfig = AppConfig(
 
   /// Cors configuration
   cors: cors,
-
-  /// Service to run on multithread server
-  services: services,
 
   /// logger configuration
   logger: logger,

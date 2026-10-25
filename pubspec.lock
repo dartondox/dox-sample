@@ -173,34 +173,34 @@ packages:
     dependency: transitive
     description:
       name: dox_annotation
-      sha256: "332cf81de29d1aa3d852024f52a5fa9bff9d9e43482222b0599331c22d5adc63"
+      sha256: "9a07aca2f7eab6167ff5d4d197fdd0936775c1f736c772df77449bad7fbc4c68"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_builder:
     dependency: "direct dev"
     description:
       name: dox_builder
-      sha256: "25155c2003296201f4b747e05b85fae4d3e9154e350e0d8e248bbde1f842764b"
+      sha256: "34f73883436e1e6ca698da24c5a93f0edb4ef7b92090bee801b988b19404dd2b"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_cache:
     dependency: transitive
     description:
       name: dox_cache
-      sha256: e26ed526e767670848dcceb32cd01616b632575755111927dbba74cf071febf3
+      sha256: "260b944c1def5c4c3eac0025d8cefe91bcd4695f5aae693dd2c5cf3b89c58653"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_core:
     dependency: "direct main"
     description:
       name: dox_core
-      sha256: "6c6ff1e53c550167c23530c28d52e47082ac7031762e552555fa0361f4a1855f"
+      sha256: "671fa852a8c4c66ca0df4287c0a4e9455775ab9d11d63737ba20530684bc5962"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_http_native:
     dependency: transitive
     description:
@@ -213,10 +213,10 @@ packages:
     dependency: "direct main"
     description:
       name: dox_migration
-      sha256: "05ffc150cca0319a274536ebe82564d95bd4460426e3dde234e6298d1a718148"
+      sha256: e68f24e2bcf8de8852db89f98f2b631c1311dae9ddd94a75202051773a973dc8
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_mysql_native:
     dependency: transitive
     description:
@@ -229,18 +229,18 @@ packages:
     dependency: transitive
     description:
       name: dox_openapi
-      sha256: e152d4ce74a288d5b5ffd632f369006617add7275f019910ffe5965160586cbb
+      sha256: "7651a5d101508efecc80722dd7085530d113a1e51d07506f7e532918ddc38296"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_orm:
     dependency: "direct main"
     description:
       name: dox_orm
-      sha256: "484dbc4522d06efec6815f5ee000ba506b16e5b6dcbc1536952863660ccbe23e"
+      sha256: cfbf9bfe07d2f43e9eb43c2ef12ce6309b93334761cfe4b602da6f77f35adb07
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_postgres_native:
     dependency: transitive
     description:
@@ -253,26 +253,26 @@ packages:
     dependency: transitive
     description:
       name: dox_socketio
-      sha256: cee91917fcc2463f77acc3df6e6b7a429ca5da37ed6597c634e78b59e33aa43a
+      sha256: "63a073fb347956b22fa368400e69697e427b203d2a7ce49d15215bcee233d603"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_storage:
     dependency: transitive
     description:
       name: dox_storage
-      sha256: "4e4e399bb753e37094814aef0e94e75c249a381b596ade3039054bd11e3c8069"
+      sha256: e1d4b49126e54fcafc02a77e018aaa9d3e188aace031d981d06d276e8856f7e0
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   dox_validation:
     dependency: transitive
     description:
       name: dox_validation
-      sha256: bfb37d98ec37987afb3a029f4f736dffb963e12e8daf7c0e768d7d5c56a703a9
+      sha256: d189a415dd066f0b12de08239c765739036f32213a2586932c946342f23f6251
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-alpha.8"
+    version: "3.0.0-alpha.9"
   ffi:
     dependency: transitive
     description:
@@ -397,10 +397,10 @@ packages:
     dependency: transitive
     description:
       name: matcher
-      sha256: dc58c723c3c24bf8d3e2d3ad3f2f9d7bd9cf43ec6feaa64181775e60190153f2
+      sha256: "31bd099b47c10cd1aeb55146a2d46ce0277630ecef3f7dae54ad7873f36696cd"
       url: "https://pub.dev"
     source: hosted
-    version: "0.12.17"
+    version: "0.12.20"
   meta:
     dependency: transitive
     description:
