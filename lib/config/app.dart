@@ -6,6 +6,7 @@ import 'package:dox_sample/config/cors.dart';
 import 'package:dox_sample/config/logger.dart';
 import 'package:dox_sample/config/env.dart';
 import 'package:dox_sample/generated/container.g.dart';
+import 'package:dox_sample/generated/dtos.g.dart';
 
 AppConfig appConfig = AppConfig(
   /// Application secret key
@@ -47,9 +48,9 @@ AppConfig appConfig = AppConfig(
 
   /// DTOs
   /// -------------------------------
-  /// The app has no DTO yet. After you add your first DTO
-  /// (`dox make:dto`) and run `dart run build_runner build`,
-  /// import `package:dox_sample/generated/dtos.g.dart` and add `dtos: dtos`.
+  /// Every @Dto class of the app, from lib/generated/dtos.g.dart
+  /// (made by build_runner). Add one with `dox make:dto`.
+  dtos: dtos,
 
   /// Cache stores (config/cache.dart)
   cache: cache,

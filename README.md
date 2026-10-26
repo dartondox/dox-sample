@@ -8,7 +8,7 @@
 
 ## Dox 3.x (alpha)
 
-This branch uses Dox `3.0.0-alpha.17`. It can still change before the stable release.
+This branch uses Dox `3.0.0-rc.1`, a release candidate. Small things can still change before the stable release.
 Docs: https://dartondox.dev/latest/
 
 You need **Dart 3.13** or newer.
@@ -16,7 +16,7 @@ You need **Dart 3.13** or newer.
 ## Quick start
 
 ```bash
-dart pub global activate dox ^3.0.0-alpha
+dart pub global activate dox ^3.0.0-rc
 dox create my_app
 cd my_app                       # dox create made .env with a new APP_KEY
 dart pub get
