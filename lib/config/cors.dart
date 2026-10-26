@@ -3,43 +3,42 @@ import 'package:dox_core/dox_core.dart';
 CORSConfig cors = CORSConfig(
   /// Enabled
   /// -------------------------------
-  /// A boolean to enable or disable CORS integration.
-  /// Setting to true will enable the CORS for all HTTP request.
+  /// Turn CORS on or off for all HTTP requests.
   enabled: false,
 
   /// Origin
   /// -------------------------------
-  /// Set a list of origins to be allowed for `Access-Control-Allow-Origin`.
-  /// The value can be one of the following:
-  /// Array       : An array of allowed origins.
-  /// String      : Comma separated list of allowed origins.
-  /// String (*)  : A wildcard (*) to allow all request origins.
-  origin: '*',
+  /// The origins that may call the app (`Access-Control-Allow-Origin`).
+  /// A browser accepts only one origin in this header.
+  /// So use a list: Dox sends back the request origin only when it is
+  /// in the list. Do not put many origins in one comma separated string.
+  /// It is sent as it is, and browsers reject it.
+  /// `'*'` allows every origin, but then `credentials` must be false.
+  origin: <String>['http://localhost:3000'],
 
   /// Methods
   /// -------------------------------
-  /// Set a list of origins to be allowed for `Access-Control-Request-Method`.
-  /// The value can be one of the following:
-  /// Array       : An array of request methods.
-  /// String      : Comma separated list of request methods.
-  /// String (*)  : A wildcard (*) to allow all request methods.
-  methods: '*',
+  /// The allowed request methods (`Access-Control-Allow-Methods`).
+  /// With `credentials: true` browsers do not accept `'*'`, so list them.
+  methods: <String>['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE'],
 
   /// Headers
   /// -------------------------------
-  /// Set a list of origins to be allowed for `Access-Control-Allow-Headers`.
-  /// The value can be one of the following:
-  /// Array       : An array of allowed headers.
-  /// String      : Comma separated list of allowed headers.
-  /// String (*)  : A wildcard (*) to allow all request headers.
-  headers: '*',
+  /// The allowed request headers (`Access-Control-Allow-Headers`).
+  /// With `credentials: true` browsers do not accept `'*'`, so list them.
+  headers: <String>[
+    'accept',
+    'authorization',
+    'content-type',
+    'x-csrf-token',
+    'x-xsrf-token',
+    'x-requested-with',
+  ],
 
   /// Expose Headers
   /// -------------------------------
-  /// Set a list of origins to be allowed for `Access-Control-Expose-Headers`.
-  /// The value can be one of the following:
-  /// Array       : An array of expose headers.
-  /// String      : Comma separated list of expose headers.
+  /// The response headers that browser code may read
+  /// (`Access-Control-Expose-Headers`).
   exposeHeaders: <String>[
     'cache-control',
     'content-language',
@@ -51,11 +50,13 @@ CORSConfig cors = CORSConfig(
 
   /// Credentials
   /// -------------------------------
-  /// Toggle `Access-Control-Allow-Credentials` header.
+  /// Send `Access-Control-Allow-Credentials`, so the browser sends cookies.
+  /// It only works with a list of origins, not with `'*'`.
   credentials: true,
 
   /// MaxAge
   /// -------------------------------
-  /// Define `Access-Control-Max-Age` header in seconds.
+  /// How long a browser may cache the preflight answer, in seconds
+  /// (`Access-Control-Max-Age`).
   maxAge: 90,
 );

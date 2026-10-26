@@ -24,7 +24,7 @@ dox s                           # dev server with hot reload, http://localhost:3
 ```
 
 The app uses SQLite (`db/dox.sqlite`), so it needs no database setup.
-For Postgres, run `docker compose up -d postgres` and set `DB_CONNECTION=postgres` and the `DB_*` keys in `.env`.
+For Postgres, run `docker compose up -d postgres` and set `DB_CONNECTION=postgres` and `DB_NAME=dox` in `.env`. The other `DB_*` keys of `.env.example` already match it.
 
 Test the server:
 
