@@ -21,9 +21,9 @@ DatabaseConfig databaseConfig = DatabaseConfig(
       password: env.dbPassword,
       database: env.dbName,
       extra: <String, dynamic>{
-        /// Each isolate has its own pool.
+        /// All isolates of the process share one pool,
+        /// so this is the limit for the whole process.
         'maxConnectionCount': 10,
-        'maxConnectionAge': Duration(hours: 1),
       },
       debug: _debug,
       printer: PrettyQueryPrinter(),
@@ -37,7 +37,11 @@ DatabaseConfig databaseConfig = DatabaseConfig(
       user: env.dbUsername,
       password: env.dbPassword,
       database: env.dbName,
-      extra: <String, dynamic>{'collation': 'utf8mb4_general_ci'},
+      extra: <String, dynamic>{
+        /// All isolates of the process share one pool,
+        /// so this is the limit for the whole process.
+        'maxConnectionCount': 10,
+      },
       debug: _debug,
       printer: PrettyQueryPrinter(),
     ),

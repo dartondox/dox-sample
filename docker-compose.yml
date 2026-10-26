@@ -1,6 +1,12 @@
 # Local development:
 #   docker compose up -d postgres   # only the database, then `dox s`
 #   docker compose up -d --build    # the database and the app (AOT image)
+#
+# The default .env uses SQLite. The app service below always uses the
+# postgres service: it sets DB_CONNECTION and DB_NAME itself.
+# To use this database with `dox s`, set these in .env:
+#   DB_CONNECTION=postgres
+#   DB_NAME=dox
 
 services:
   # Http server (production image)
@@ -9,8 +15,12 @@ services:
     # config is read from env vars; the image has no .env file
     env_file: .env
     environment:
+      - DB_CONNECTION=postgres
       - DB_HOST=postgres
       - DB_PORT=5432
+      - DB_NAME=dox
+      - DB_USERNAME=${DB_USERNAME:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
     restart: unless-stopped
     ports:
       - "${APP_PORT:-3000}:${APP_PORT:-3000}"
@@ -24,14 +34,14 @@ services:
     environment:
       - POSTGRES_USER=${DB_USERNAME:-postgres}
       - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
-      - POSTGRES_DB=${DB_NAME:-postgres}
+      - POSTGRES_DB=dox
     ports:
       - "${DB_PORT:-5432}:5432"
     volumes:
       - postgres:/var/lib/postgresql
     restart: unless-stopped
     healthcheck:
-      test: ['CMD', 'pg_isready', '-q', '-U', '${DB_USERNAME:-postgres}']
+      test: ['CMD', 'pg_isready', '-q', '-U', '${DB_USERNAME:-postgres}', '-d', 'dox']
       interval: 5s
       retries: 5
 

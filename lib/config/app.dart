@@ -10,12 +10,12 @@ import 'package:dox_sample/generated/container.g.dart';
 AppConfig appConfig = AppConfig(
   /// Application secret key
   /// -------------------------------
-  /// This key is use to encrypt/decrypt the data such as cache and cookies.
-  /// Make sure to keep the `APP_KEY` as an environment variable and secure.
+  /// This key encrypts and checks cookies.
+  /// It must be exactly 32 characters. Run `dox key:generate` to make one.
+  /// Keep `APP_KEY` in an environment variable, never in the code.
   ///
-  /// Note: Changing the application key for an existing app will make all
-  /// the cookies and cache invalid and also the existing encrypted data
-  /// will not be decrypted.
+  /// Note: if you change the key, all old cookies stop working,
+  /// because they can not be decrypted any more.
   appKey: env.appKey,
 
   /// Server port
@@ -42,8 +42,14 @@ AppConfig appConfig = AppConfig(
   /// Container
   /// -------------------------------
   /// Every @Inject class, router and provider of the app,
-  /// from lib/container.g.dart (made by build_runner).
+  /// from lib/generated/container.g.dart (made by build_runner).
   container: registerContainer,
+
+  /// DTOs
+  /// -------------------------------
+  /// The app has no DTO yet. After you add your first DTO
+  /// (`dox make:dto`) and run `dart run build_runner build`,
+  /// import `package:dox_sample/generated/dtos.g.dart` and add `dtos: dtos`.
 
   /// Cache stores (config/cache.dart)
   cache: cache,
