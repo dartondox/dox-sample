@@ -77,7 +77,7 @@ Or use Docker. The image holds only the binary (about 12 MB), on `FROM scratch`.
 It has no `.env` file. Config comes from env variables. A real env variable wins over `.env`.
 
 ```bash
-docker compose up -d --build                       # app + postgres
+docker compose up -d --build                       # app + queue worker + postgres
 
 docker build -t my-app .                           # or only the image
 docker run -p 3000:3000 --env-file .env -e DB_HOST=my-db-host my-app
