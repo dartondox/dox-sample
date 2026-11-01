@@ -44,4 +44,21 @@ void main() {
     await trashed?.forceDelete();
     expect(await User().withTrash().where('email', email).getFirst(), isNull);
   });
+
+  test('user model: create from a map (fillable)', () async {
+    String email = 'create-${DateTime.now().microsecondsSinceEpoch}@dox.dev';
+
+    User user = await User().create(<String, dynamic>{
+      'name': 'Map',
+      'email': email,
+      'password': 'secret',
+    });
+    expect(user.id, isNotNull);
+
+    User? found = await User().where('email', email).getFirst();
+    expect(found?.name, 'Map');
+    expect(found?.toJson().containsKey('password'), isFalse);
+
+    await found?.forceDelete();
+  });
 }

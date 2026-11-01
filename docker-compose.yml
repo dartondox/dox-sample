@@ -1,6 +1,6 @@
 # Local development:
 #   docker compose up -d postgres   # only the database, then `dox s`
-#   docker compose up -d --build    # the database and the app (AOT image)
+#   docker compose up -d --build    # the database, the app and the queue worker
 #
 # The default .env uses SQLite. The app service below always uses the
 # postgres service: it sets DB_CONNECTION and DB_NAME itself.
@@ -28,6 +28,28 @@ services:
       postgres:
         condition: service_healthy
 
+  # Queue worker: runs the dispatched jobs (lib/config/queue.dart uses
+  # the database driver, so jobs wait in the jobs table until a worker
+  # takes them). Same image as the app. The app runs the migrations
+  # when it starts; the worker restarts until the jobs table is there.
+  worker:
+    build: .
+    command: ["/app/bin/queue", "work"]
+    env_file: .env
+    environment:
+      - DB_CONNECTION=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=dox
+      - DB_USERNAME=${DB_USERNAME:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      app:
+        condition: service_started
+
   # Postgres database
   postgres:
     image: postgres:18
@@ -36,7 +58,8 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
       - POSTGRES_DB=dox
     ports:
-      - "${DB_PORT:-5432}:5432"
+      # only this machine can reach it, not the network
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
     volumes:
       - postgres:/var/lib/postgresql
     restart: unless-stopped
