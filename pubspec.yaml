@@ -19,8 +19,9 @@ dev_dependencies:
   test: ^1.26.3
 
 # The app uses SQLite, so the build skips the Postgres and MySQL drivers.
-# When you set DB_CONNECTION=postgres or mysql in .env, remove the `skip`
-# line of that driver. Then you may add `sqlite3: source: system` under
+# When you set DB_CONNECTION=postgres or mysql in .env, remove the two
+# lines of that driver (its name line and its `skip: true` line).
+# Then you may add `sqlite3: source: system` under
 # `user_defines`: the build then loads the SQLite of the system and does
 # not download its own copy.
 hooks:
