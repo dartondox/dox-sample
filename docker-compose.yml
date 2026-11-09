@@ -7,6 +7,10 @@
 # To use this database with `dox s`, set these in .env:
 #   DB_CONNECTION=postgres
 #   DB_NAME=dox
+#
+# Postgres needs its driver in the build. First remove the
+# `dox_postgres_native:` line and the `skip: true` line under it,
+# at the end of pubspec.yaml.
 
 services:
   # Http server (production image)

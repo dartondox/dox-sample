@@ -122,6 +122,23 @@ Never edit generated files by hand:
 - **Style.** The lints in `analysis_options.yaml` ask for types everywhere (`always_specify_types`).
   Write `List<String> names = <String>[];`, not `var names = [];`.
 
+## Switch the database
+
+The app uses SQLite by default. The build skips the Postgres and MySQL drivers.
+This is set in the `hooks: user_defines:` block at the end of `pubspec.yaml`.
+
+To use Postgres or MySQL:
+
+1. Set `DB_CONNECTION=postgres` (or `mysql`) and the other `DB_*` keys in `.env`.
+2. In `pubspec.yaml`, remove both lines of that driver: its name line (`dox_postgres_native:` or `dox_mysql_native:`) and the `skip: true` line under it.
+3. Run `dart pub get`, then start the app again.
+
+Without step 2 the app stops with an error: the native library is not in the build.
+After the switch, you may add `sqlite3: source: system` under `user_defines`.
+The build then uses the SQLite library of the system and does not download one.
+Only do this when the app never opens SQLite. A system without `libsqlite3` (like the Docker image) then fails at runtime.
+`docker compose up` runs the app on Postgres, so it needs step 2 too.
+
 ## Check your work
 
 Run these before you say a change is done:
