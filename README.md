@@ -13,6 +13,8 @@ Docs: https://dartondox.dev/latest/
 
 You need **Dart 3.13** or newer.
 
+AI coding tools get their rules from `AGENTS.md`. Step-by-step recipes are in `.agents/skills/dox/SKILL.md`.
+
 ## Quick start
 
 ```bash
