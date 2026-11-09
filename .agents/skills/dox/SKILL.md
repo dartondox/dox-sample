@@ -51,10 +51,10 @@ class SavePost {
 The serializer sets the JSON shape:
 
 ```dart
-// lib/app/http/serializers/post.serializer.dart
+// lib/app/serializers/post.serializer.dart
 import 'package:dox_core/dox_core.dart';
 
-import '../../../app/models/post/post.model.dart';
+import 'package:dox_sample/app/models/post/post.model.dart';
 
 class PostSerializer extends Serializer<Post> {
   PostSerializer(super.data);
@@ -73,7 +73,7 @@ A route param like `{id}` comes in as `int id`.
 // lib/app/http/controllers/post.controller.dart
 import 'package:dox_core/dox_core.dart';
 import 'package:dox_sample/app/dtos/save_post/save_post.dto.dart';
-import 'package:dox_sample/app/http/serializers/post.serializer.dart';
+import 'package:dox_sample/app/serializers/post.serializer.dart';
 import 'package:dox_sample/app/models/post/post.model.dart';
 
 @Inject()
