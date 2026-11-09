@@ -130,8 +130,7 @@ This is set in the `hooks: user_defines:` block at the end of `pubspec.yaml`.
 To use Postgres or MySQL:
 
 1. Set `DB_CONNECTION=postgres` (or `mysql`) and the other `DB_*` keys in `.env`.
-2. In `pubspec.yaml`, remove the `skip: true` line of that driver (`dox_postgres_native` or `dox_mysql_native`).
-   Remove its name line too when nothing is left under it.
+2. In `pubspec.yaml`, remove both lines of that driver: its name line (`dox_postgres_native:` or `dox_mysql_native:`) and the `skip: true` line under it.
 3. Run `dart pub get`, then start the app again.
 
 Without step 2 the app stops with an error: the native library is not in the build.

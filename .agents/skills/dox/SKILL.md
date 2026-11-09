@@ -398,7 +398,7 @@ hooks:
       skip: true
 ```
 
-For Postgres, remove the `dox_postgres_native` lines. Keep the MySQL skip.
+For Postgres, remove both `dox_postgres_native` lines (the name line and `skip: true`). Keep the MySQL skip.
 You may also add `sqlite3: source: system`, so the build does not download SQLite:
 
 ```yaml
@@ -415,7 +415,7 @@ Only add `sqlite3: source: system` when the app never opens SQLite.
 Then set `DB_CONNECTION` and the other `DB_*` keys in `.env`, and run `dart pub get`.
 
 A driver that is still skipped stops the app with an error: the native library is not in the build.
-The fix is to remove its `skip` line.
+The fix is to remove both lines of that driver (the name line and `skip: true`).
 
 Docs: https://dartondox.dev/latest/database/#skip-unused-drivers
 
