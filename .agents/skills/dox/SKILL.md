@@ -1,6 +1,6 @@
 ---
 name: dox
-description: Step-by-step recipes for this Dox (Dart backend) app. Use it when you add or change routes, controllers, DTOs, serializers, models, migrations, factories, seeders, queue jobs, middleware or tests in this project.
+description: Step-by-step recipes for this Dox (Dart backend) app. Use it when you add or change routes, controllers, DTOs, serializers, models, migrations, factories, seeders, queue jobs, middleware or tests in this project, or switch the database to Postgres or MySQL.
 ---
 
 # Dox recipes
@@ -384,6 +384,40 @@ Docs:
 
 - https://dartondox.dev/latest/digging-deeper/testing/
 - https://dartondox.dev/latest/guides/testing-with-database/
+
+## 6. Switch to Postgres or MySQL
+
+The app uses SQLite. The end of `pubspec.yaml` turns off the two other drivers:
+
+```yaml
+hooks:
+  user_defines:
+    dox_postgres_native:
+      skip: true
+    dox_mysql_native:
+      skip: true
+```
+
+For Postgres, remove the `dox_postgres_native` lines. Keep the MySQL skip.
+You may also add `sqlite3: source: system`, so the build does not download SQLite:
+
+```yaml
+hooks:
+  user_defines:
+    dox_mysql_native:
+      skip: true
+    sqlite3:
+      source: system
+```
+
+For MySQL, do the same with `dox_mysql_native`.
+Only add `sqlite3: source: system` when the app never opens SQLite.
+Then set `DB_CONNECTION` and the other `DB_*` keys in `.env`, and run `dart pub get`.
+
+A driver that is still skipped stops the app with an error: the native library is not in the build.
+The fix is to remove its `skip` line.
+
+Docs: https://dartondox.dev/latest/database/#skip-unused-drivers
 
 ## Before you finish
 

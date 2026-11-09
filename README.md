@@ -27,6 +27,7 @@ dox s                           # dev server with hot reload, http://localhost:3
 
 The app uses SQLite (`db/dox.sqlite`), so it needs no database setup.
 For Postgres, run `docker compose up -d postgres` and set `DB_CONNECTION=postgres` and `DB_NAME=dox` in `.env`. The other `DB_*` keys of `.env.example` already match it.
+Also remove the `dox_postgres_native` skip lines at the end of `pubspec.yaml`. The build skips the drivers that the app does not use.
 
 Test the server:
 
@@ -77,6 +78,8 @@ Run the worker and the scheduler as their own processes, next to the server.
 
 Or use Docker. The image holds only the binary (about 12 MB), on `FROM scratch`.
 It has no `.env` file. Config comes from env variables. A real env variable wins over `.env`.
+
+`docker compose up` runs the app on Postgres. First remove the `dox_postgres_native` skip lines at the end of `pubspec.yaml`.
 
 ```bash
 docker compose up -d --build                       # app + queue worker + postgres
