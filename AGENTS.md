@@ -25,7 +25,7 @@ Step-by-step recipes (new endpoint, model, job, middleware, test) are in
 | --- | --- |
 | `lib/app/http/controllers/` | Controllers. File: `<name>.controller.dart`, class `<Name>Controller`. |
 | `lib/app/http/middleware/` | Middleware. File: `<name>.middleware.dart`. |
-| `lib/app/http/serializers/` | Serializers (JSON shape of a response). File: `<name>.serializer.dart`. |
+| `lib/app/serializers/` | Serializers (JSON shape of a response). File: `<name>.serializer.dart`. |
 | `lib/app/dtos/<name>/` | DTOs (checked input). File: `<name>.dto.dart`. |
 | `lib/app/models/<name>/` | ORM models. File: `<name>.model.dart`, plus the made `<name>.model.g.dart`. |
 | `lib/app/jobs/` | Queue jobs. File: `<name>.job.dart`. |
@@ -55,7 +55,7 @@ The CLI puts each file in the right folder, with the right name and base code.
 | `dox make:model Post -m` | the model and a `create_posts_table` migration |
 | `dox make:migration create_posts_table` | a Dart migration in `db/migration`, and updates `migrations.dart` |
 | `dox make:dto SavePost` | `lib/app/dtos/save_post/save_post.dto.dart` |
-| `dox make:serializer Post` | `lib/app/http/serializers/post.serializer.dart` |
+| `dox make:serializer Post` | `lib/app/serializers/post.serializer.dart` |
 | `dox make:middleware Auth` | `lib/app/http/middleware/auth.middleware.dart` |
 | `dox make:job SendReport` | `lib/app/jobs/send_report.job.dart` |
 | `dox make:factory Post` | `db/factories/post.factory.dart` |
