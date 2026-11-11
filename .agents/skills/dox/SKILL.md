@@ -215,6 +215,7 @@ class PostController {
 ```
 
 Add the routes in `lib/routes/api.dart`, inside `register()`. The router adds the `api` prefix.
+Import `post.controller.dart` at the top of `api.dart`.
 
 ```dart
 Route.get('/posts', (PostController c) => c.index);
@@ -337,7 +338,7 @@ Follow `test/http_test.dart`. `DoxTestClient.start` runs the app inside the test
 Run the migrations first when the route uses the database.
 A `Map` body is sent as JSON.
 If recipe 4 put `POST /api/posts` behind `ApiKeyMiddleware`, set `API_KEY` in `.env`.
-Then send it in the test: `client.post('/api/posts', body: ..., headers: <String, String>{'X-Api-Key': env.apiKey!})`.
+Then send the `X-Api-Key` header in every request to `POST /api/posts`, also in the 422 test: `client.post('/api/posts', body: ..., headers: <String, String>{'X-Api-Key': env.apiKey!})`.
 `env` comes from `package:dox_sample/config/env.dart`.
 
 ```dart
