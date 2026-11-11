@@ -272,9 +272,7 @@ Run the generator. It adds the job to `lib/generated/jobs.g.dart`.
 dart run build_runner build
 ```
 
-Dispatch it from a controller or a service:
-
-Import `send_report.job.dart` at the top of that file.
+Dispatch it from a controller or a service. Import `send_report.job.dart` at the top of that file.
 
 ```dart
 await SendReport(userId: 1).dispatch();
