@@ -16,7 +16,7 @@ Full docs:
 Read the docs before you guess an API. Do not invent class or method names.
 Look at the code that is already in this project, and copy its style.
 
-Step-by-step recipes (new endpoint, model, job, middleware, test) are in
+Step-by-step recipes (model, endpoint, job, middleware, test) are in
 `.agents/skills/dox/SKILL.md`. Open it as a normal file if your tool has no skill support.
 
 ## Folder layout
