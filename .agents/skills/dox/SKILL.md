@@ -11,115 +11,7 @@ Full docs: https://dartondox.dev/llms-full.txt
 The examples use a `Post` model. Change the names for your case.
 Imports use the package name of this app: `package:dox_sample/...`.
 
-## 1. A new API endpoint
-
-Goal: `POST /api/posts` checks the input, saves a post and answers with JSON.
-It needs the `Post` model of recipe 2.
-
-Make the files:
-
-```bash
-dox make:controller Post
-dox make:dto SavePost
-dox make:serializer Post
-```
-
-The DTO checks the input. A field that is not nullable is required.
-
-```dart
-// lib/app/dtos/save_post/save_post.dto.dart
-import 'package:dox_core/dox_core.dart';
-
-part 'save_post.dto.g.dart';
-
-@Dto()
-class SavePost {
-  @Trim()
-  @Length(min: 3, max: 100)
-  final String title;
-
-  @Trim()
-  @MinLength(10)
-  final String body;
-
-  const SavePost({required this.title, required this.body});
-
-  static const DtoSchema<SavePost> schema = $SavePostDto;
-}
-```
-
-The serializer sets the JSON shape:
-
-```dart
-// lib/app/serializers/post.serializer.dart
-import 'package:dox_core/dox_core.dart';
-
-import 'package:dox_sample/app/models/post/post.model.dart';
-
-class PostSerializer extends Serializer<Post> {
-  PostSerializer(super.data);
-
-  @override
-  Map<String, dynamic> convert(Post m) {
-    return <String, dynamic>{'id': m.id, 'title': m.title, 'body': m.body};
-  }
-}
-```
-
-The controller asks for the DTO as a parameter. Bad input gets `422`, and the method does not run.
-A route param like `{id}` comes in as `int id`.
-
-```dart
-// lib/app/http/controllers/post.controller.dart
-import 'package:dox_core/dox_core.dart';
-import 'package:dox_sample/app/dtos/save_post/save_post.dto.dart';
-import 'package:dox_sample/app/serializers/post.serializer.dart';
-import 'package:dox_sample/app/models/post/post.model.dart';
-
-@Inject()
-class PostController {
-  Future<PostSerializer> index(DoxRequest req) async {
-    return PostSerializer(await Post().all());
-  }
-
-  Future<DoxResponse> store(SavePost input) async {
-    Post post = Post()
-      ..title = input.title
-      ..body = input.body;
-    await post.save();
-    return response(PostSerializer(post)).statusCode(201);
-  }
-
-  Future<PostSerializer> show(int id) async {
-    Post? post = await Post().find(id);
-    if (post == null) throw NotFoundHttpException();
-    return PostSerializer(post);
-  }
-}
-```
-
-Add the routes in `lib/routes/api.dart`, inside `register()`. The router adds the `api` prefix.
-
-```dart
-Route.get('/posts', (PostController c) => c.index);
-Route.post('/posts', (PostController c) => c.store);
-Route.get('/posts/{id}', (PostController c) => c.show);
-```
-
-Then run the generator. It adds the controller to the container and makes the DTO code.
-
-```bash
-dart run build_runner build
-```
-
-Docs:
-
-- https://dartondox.dev/latest/the-basic/routing/
-- https://dartondox.dev/latest/the-basic/controller/
-- https://dartondox.dev/latest/the-basic/validation/
-- https://dartondox.dev/latest/the-basic/serializer/
-
-## 2. A new model and migration
+## 1. A new model and migration
 
 Stop `dox s` first. It runs new migrations at start, before you add the columns.
 
@@ -235,6 +127,114 @@ Docs:
 - https://dartondox.dev/latest/database/factories/
 - https://dartondox.dev/latest/database/seeders/
 
+## 2. A new API endpoint
+
+Goal: `POST /api/posts` checks the input, saves a post and answers with JSON.
+It uses the `Post` model of recipe 1. Do recipe 1 first.
+
+Make the files:
+
+```bash
+dox make:controller Post
+dox make:dto SavePost
+dox make:serializer Post
+```
+
+The DTO checks the input. A field that is not nullable is required.
+
+```dart
+// lib/app/dtos/save_post/save_post.dto.dart
+import 'package:dox_core/dox_core.dart';
+
+part 'save_post.dto.g.dart';
+
+@Dto()
+class SavePost {
+  @Trim()
+  @Length(min: 3, max: 100)
+  final String title;
+
+  @Trim()
+  @MinLength(10)
+  final String body;
+
+  const SavePost({required this.title, required this.body});
+
+  static const DtoSchema<SavePost> schema = $SavePostDto;
+}
+```
+
+The serializer sets the JSON shape:
+
+```dart
+// lib/app/serializers/post.serializer.dart
+import 'package:dox_core/dox_core.dart';
+
+import 'package:dox_sample/app/models/post/post.model.dart';
+
+class PostSerializer extends Serializer<Post> {
+  PostSerializer(super.data);
+
+  @override
+  Map<String, dynamic> convert(Post m) {
+    return <String, dynamic>{'id': m.id, 'title': m.title, 'body': m.body};
+  }
+}
+```
+
+The controller asks for the DTO as a parameter. Bad input gets `422`, and the method does not run.
+A route param like `{id}` comes in as `int id`.
+
+```dart
+// lib/app/http/controllers/post.controller.dart
+import 'package:dox_core/dox_core.dart';
+import 'package:dox_sample/app/dtos/save_post/save_post.dto.dart';
+import 'package:dox_sample/app/models/post/post.model.dart';
+import 'package:dox_sample/app/serializers/post.serializer.dart';
+
+@Inject()
+class PostController {
+  Future<PostSerializer> index(DoxRequest req) async {
+    return PostSerializer(await Post().all());
+  }
+
+  Future<DoxResponse> store(SavePost input) async {
+    Post post = Post()
+      ..title = input.title
+      ..body = input.body;
+    await post.save();
+    return response(PostSerializer(post)).statusCode(201);
+  }
+
+  Future<PostSerializer> show(int id) async {
+    Post? post = await Post().find(id);
+    if (post == null) throw NotFoundHttpException();
+    return PostSerializer(post);
+  }
+}
+```
+
+Add the routes in `lib/routes/api.dart`, inside `register()`. The router adds the `api` prefix.
+
+```dart
+Route.get('/posts', (PostController c) => c.index);
+Route.post('/posts', (PostController c) => c.store);
+Route.get('/posts/{id}', (PostController c) => c.show);
+```
+
+Then run the generator. It adds the controller to the container and makes the DTO code.
+
+```bash
+dart run build_runner build
+```
+
+Docs:
+
+- https://dartondox.dev/latest/the-basic/routing/
+- https://dartondox.dev/latest/the-basic/controller/
+- https://dartondox.dev/latest/the-basic/validation/
+- https://dartondox.dev/latest/the-basic/serializer/
+
 ## 3. A queued job
 
 ```bash
@@ -313,7 +313,11 @@ class ApiKeyMiddleware implements IDoxMiddleware {
 }
 ```
 
-Put it on a group in `lib/routes/api.dart`, inside `register()`:
+Put it on a group in `lib/routes/api.dart`, inside `register()`.
+Recipe 2 already added the `/posts` routes there. Move the routes you want to guard into the group.
+Delete their old lines. Do not add the same route twice.
+Here, `GET /posts/{id}` stays outside the group, so it stays open.
+Import `api_key.middleware.dart` at the top of `api.dart`.
 
 ```dart
 Route.middleware(<dynamic>[ApiKeyMiddleware()], () {
@@ -332,6 +336,9 @@ Docs: https://dartondox.dev/latest/the-basic/middleware/
 Follow `test/http_test.dart`. `DoxTestClient.start` runs the app inside the test, on a free port.
 Run the migrations first when the route uses the database.
 A `Map` body is sent as JSON.
+If recipe 4 put `POST /api/posts` behind `ApiKeyMiddleware`, set `API_KEY` in `.env`.
+Then send it in the test: `client.post('/api/posts', body: ..., headers: <String, String>{'X-Api-Key': env.apiKey!})`.
+`env` comes from `package:dox_sample/config/env.dart`.
 
 ```dart
 // test/post_test.dart
