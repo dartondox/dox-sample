@@ -118,7 +118,8 @@ class PostSeeder extends Seeder {
 }
 ```
 
-Add `PostSeeder()` to the list in `db/seeders/database.seeder.dart`. Then run `dox db:seed`.
+Add `PostSeeder()` to the list in `db/seeders/database.seeder.dart`.
+Import `post.seeder.dart` at the top of `database.seeder.dart`. Then run `dox db:seed`.
 
 Docs:
 
@@ -272,6 +273,8 @@ dart run build_runner build
 ```
 
 Dispatch it from a controller or a service:
+
+Import `send_report.job.dart` at the top of that file.
 
 ```dart
 await SendReport(userId: 1).dispatch();
