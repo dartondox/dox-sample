@@ -59,8 +59,12 @@ Run it again after you add or update a package.
 | `dox-queue-guide` | `dox_queue` |
 | `dox-scheduler-guide` | `dox_scheduler` |
 | `dox-storage-guide` | `dox_storage` |
+| `dox-cache-guide` | `dox_cache` |
+| `dox-validation-guide` | `dox_validation` |
+| `dox-openapi-guide` | `dox_openapi` |
 
-Other Dox packages (like `dox_auth` or `dox_cache`) have skills too. Add the package to `pubspec.yaml`, then run the command again.
+The skills CLI only reads the packages listed in your own `pubspec.yaml`, not the packages they pull in.
+To get the skill of another package (like `dox_auth`, or `ioredis` if you use Redis directly), add it to `pubspec.yaml`, then run the command again.
 
 ## Migrations
 

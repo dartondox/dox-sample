@@ -39,9 +39,13 @@ Run it again after a package is added or updated.
 | `dox-queue-guide` | `dox_queue` | queued jobs |
 | `dox-scheduler-guide` | `dox_scheduler` | scheduled tasks |
 | `dox-storage-guide` | `dox_storage` | file storage |
+| `dox-cache-guide` | `dox_cache` | cache stores, remember, locks |
+| `dox-validation-guide` | `dox_validation` | validation rules |
+| `dox-openapi-guide` | `dox_openapi` | OpenAPI docs |
 
-The command installs the skills of the direct dependencies in `pubspec.yaml` only.
-When you add a Dox package (like `dox_auth`), run it again to get that package's skill.
+The skills CLI only reads the packages listed in this app's `pubspec.yaml`.
+It does not see packages that only come in through another package.
+To get the skill of a package, add it to `pubspec.yaml` (for example `dox_auth`, or `ioredis` if you use Redis directly), then run the command again.
 
 The skills go to the skills folder of the agent, like `.agents/skills/` or `.claude/skills/`.
 If your tool has no skill support, open `<folder>/<skill>/SKILL.md` as a normal file.
