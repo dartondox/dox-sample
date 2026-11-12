@@ -16,8 +16,35 @@ Full docs:
 Read the docs before you guess an API. Do not invent class or method names.
 Look at the code that is already in this project, and copy its style.
 
-Step-by-step recipes (model, endpoint, job, middleware, test) are in
-`.agents/skills/dox/SKILL.md`. Open it as a normal file if your tool has no skill support.
+## Skills
+
+The Dox packages ship skills: step-by-step recipes with the real API of each package.
+They are not in this repo. Install them after `dart pub get`:
+
+```bash
+dart run skills@ get --all --agent <agent>
+```
+
+`<agent>` is `claude`, `codex`, `cursor`, `copilot`, `cline`, `opencode`, `antigravity` or `generic`.
+Pick the one you are. Without `--agent`, the command finds the agent from folders
+like `.claude/` or `.agents/`, and asks when it finds none.
+Without `--all`, it asks which skills to install.
+Run it again after a package is added or updated.
+
+| Skill | Package | Use it for |
+| --- | --- | --- |
+| `dox-core-guide` | `dox_core` | routes, controllers, DTOs, serializers, middleware, env config, HTTP tests |
+| `dox-orm-guide` | `dox_orm` | models, queries, relations, factories, switch to Postgres or MySQL |
+| `dox-migration-guide` | `dox_migration` | migrations, schema, seeders |
+| `dox-queue-guide` | `dox_queue` | queued jobs |
+| `dox-scheduler-guide` | `dox_scheduler` | scheduled tasks |
+| `dox-storage-guide` | `dox_storage` | file storage |
+
+The command installs the skills of the direct dependencies in `pubspec.yaml` only.
+When you add a Dox package (like `dox_auth`), run it again to get that package's skill.
+
+The skills go to the skills folder of the agent, like `.agents/skills/` or `.claude/skills/`.
+If your tool has no skill support, open `<folder>/<skill>/SKILL.md` as a normal file.
 
 ## Folder layout
 
