@@ -11,6 +11,11 @@ dependencies:
   dox_queue: ^3.1.0
   dox_scheduler: ^3.1.0
   dox_storage: ^3.1.0
+  # dox_core already uses these three. They are listed here so that
+  # `dart run skills@ get` installs their skills too.
+  dox_cache: ^3.1.3
+  dox_validation: ^3.1.2
+  dox_openapi: ^3.1.0
 
 dev_dependencies:
   dox_builder: ^3.1.1

@@ -13,7 +13,7 @@ Docs: https://dartondox.dev/latest/
 
 You need **Dart 3.14** or newer.
 
-AI coding tools get their rules from `AGENTS.md`. Step-by-step recipes are in `.agents/skills/dox/SKILL.md`.
+AI coding tools get their rules from `AGENTS.md`. The Dox packages ship step-by-step skills for them. See [AI coding tools](#ai-coding-tools).
 
 ## Quick start
 
@@ -22,6 +22,7 @@ dart pub global activate dox
 dox create my_app
 cd my_app                       # dox create made .env with a new APP_KEY
 dart pub get
+dart run skills@ get            # install the skills of the Dox packages for your AI coding tool
 dox s                           # dev server with hot reload, http://localhost:3000
 ```
 
@@ -34,6 +35,36 @@ Test the server:
 ```bash
 curl http://localhost:3000/api/ping   # pong
 ```
+
+## AI coding tools
+
+`AGENTS.md` has the rules of this project. `CLAUDE.md` points to it.
+
+The Dox packages ship skills: recipes with the real API of each package.
+Install them with the [skills](https://pub.dev/packages/skills) CLI:
+
+```bash
+dart run skills@ get
+```
+
+It works with Claude Code, Codex, Cursor, GitHub Copilot and others.
+It asks which skills to install. `--all` installs all of them. `--agent claude` (or `codex`, `cursor`, `copilot`, `generic`) picks the tool.
+Run it again after you add or update a package.
+
+| Skill | Package |
+| --- | --- |
+| `dox-core-guide` | `dox_core` |
+| `dox-orm-guide` | `dox_orm` |
+| `dox-migration-guide` | `dox_migration` |
+| `dox-queue-guide` | `dox_queue` |
+| `dox-scheduler-guide` | `dox_scheduler` |
+| `dox-storage-guide` | `dox_storage` |
+| `dox-cache-guide` | `dox_cache` |
+| `dox-validation-guide` | `dox_validation` |
+| `dox-openapi-guide` | `dox_openapi` |
+
+The skills CLI only reads the packages listed in your own `pubspec.yaml`, not the packages they pull in.
+To get the skill of another package (like `dox_auth`, or `ioredis` if you use Redis directly), add it to `pubspec.yaml`, then run the command again.
 
 ## Migrations
 
