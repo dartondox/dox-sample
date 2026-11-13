@@ -103,6 +103,7 @@ Other commands:
 - `dox key:generate`: write a new `APP_KEY` to `.env`.
 - `dox env:check`: check `.env` against `lib/config/env.dart`.
 - `dox build`: build the native binaries for production.
+- `dox add <x>`: add the package `dox_x` and set it up, like `dox add orm --driver=postgres`. Safe to run twice: it never overwrites a file.
 - `dox help`: list all commands.
 
 ## Code generation
