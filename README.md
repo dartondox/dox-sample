@@ -11,7 +11,7 @@
 The starter project for Dox apps. `dox create` copies it.
 Docs: https://dartondox.dev/latest/
 
-You need **Dart 3.14** or newer.
+You need **Dart 3.13** or newer.
 
 AI coding tools get their rules from `AGENTS.md`. The Dox packages ship step-by-step skills for them. See [AI coding tools](#ai-coding-tools).
 
