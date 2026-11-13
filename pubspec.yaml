@@ -9,6 +9,7 @@ dependencies:
   dox_orm: ^3.1.0
   dox_migration: ^3.1.0
   dox_queue: ^3.1.0
+  dox_queue_database: ^3.1.0
   dox_scheduler: ^3.1.0
   dox_storage: ^3.1.0
   # dox_core already uses these three. They are listed here so that
