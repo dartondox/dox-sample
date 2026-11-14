@@ -8,7 +8,8 @@ import 'package:dox_sample/config/env.dart';
 StorageConfig storageConfig = StorageConfig(
   defaultDisk: env.storageDisk,
   disks: <String, Map<String, dynamic>>{
-    /// files in the `storage` folder
-    'local': <String, dynamic>{'driver': 'local', 'root': 'storage'},
+    /// files in the `storage/app` folder. Keep it apart from `storage/cache`,
+    /// so a public file route can not serve cache entries
+    'local': <String, dynamic>{'driver': 'local', 'root': 'storage/app'},
   },
 );

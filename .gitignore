@@ -1,6 +1,8 @@
 .dart_tool/
 .DS_Store
 .env
+.env.*
+!.env.example
 bin/server
 storage/cache
 build/
