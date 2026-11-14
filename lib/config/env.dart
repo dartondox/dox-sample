@@ -20,8 +20,6 @@ abstract class AppEnv {
   /// development, staging or production. Not set: production.
   String get appEnv => 'production';
 
-  bool get isDevelopment => appEnv == 'development';
-
   int get appPort => 3000;
 
   /// required: used to sign tokens and encrypt cookies
@@ -43,6 +41,10 @@ abstract class AppEnv {
 
   /// the database name. For SQLite: the file path.
   String get dbName => 'db/dox.sqlite';
+
+  /// a database url, eg. `postgres://user:pass@host:5432/db`.
+  /// When set, it wins over the DB_* keys (see DatabaseConfig.url).
+  String? get databaseUrl;
 
   String get dbHost => 'localhost';
 
