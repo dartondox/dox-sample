@@ -27,9 +27,9 @@ RUN /root/.pub-cache/bin/dox build
 
 # Lay out the final file tree:
 # /app/bin/server, /app/bin/queue, /app/bin/schedule, /app/lib (native
-# libraries), /app/db/migration, /app/storage and a writable /tmp
+# libraries), /app/db/migration, /app/storage/app and a writable /tmp
 # (uploads bigger than 1 MB are streamed to a temp file).
-RUN mkdir -p /out/app/storage /out/tmp \
+RUN mkdir -p /out/app/storage/app /out/tmp \
   && chmod 1777 /out/tmp \
   && cp -r build/bundle/. /out/app/ \
   # the native HTTP server (Rust) needs libgcc_s, which /runtime/ does not have

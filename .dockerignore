@@ -8,4 +8,6 @@ build/
 .gitignore
 .idea/
 .env
+.env.*
+!.env.example
 storage/
