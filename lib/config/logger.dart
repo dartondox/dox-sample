@@ -21,5 +21,7 @@ LoggerConfig logger = LoggerConfig(
   /// -------------------------------
   /// It is highly advised NOT to use `prettyPrint` in production, since it
   /// can have huge impact on performance.
-  prettyPrint: env.isDevelopment,
+  // not appConfig.isDevelopment: config/app.dart imports this file, so
+  // reading appConfig here would be a cycle
+  prettyPrint: env.appEnv == 'development',
 );

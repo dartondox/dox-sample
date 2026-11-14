@@ -10,7 +10,6 @@ class _$AppEnv extends AppEnv {
   _$AppEnv._({
     required this.appName,
     required this.appEnv,
-    required this.isDevelopment,
     required this.appPort,
     required this.appKey,
     required this.appTotalIsolate,
@@ -29,8 +28,6 @@ class _$AppEnv extends AppEnv {
   final String appName;
   @override
   final String appEnv;
-  @override
-  final bool isDevelopment;
   @override
   final int appPort;
   @override
@@ -63,7 +60,6 @@ class _$AppEnv extends AppEnv {
     _$AppEnvDefaults d = _$AppEnvDefaults();
     String appName = r.string('APP_NAME') ?? d.appName;
     String appEnv = r.string('APP_ENV') ?? d.appEnv;
-    bool isDevelopment = r.boolean('IS_DEVELOPMENT') ?? d.isDevelopment;
     int appPort = r.integer('APP_PORT') ?? d.appPort;
     String? appKey = r.string('APP_KEY');
     r.need('APP_KEY');
@@ -82,7 +78,6 @@ class _$AppEnv extends AppEnv {
     return _$AppEnv._(
       appName: appName,
       appEnv: appEnv,
-      isDevelopment: isDevelopment,
       appPort: appPort,
       appKey: appKey!,
       appTotalIsolate: appTotalIsolate,
