@@ -18,6 +18,7 @@ class _$AppEnv extends AppEnv {
     required this.storageDisk,
     required this.dbConnection,
     required this.dbName,
+    required this.databaseUrl,
     required this.dbHost,
     required this.dbPort,
     required this.dbUsername,
@@ -45,6 +46,8 @@ class _$AppEnv extends AppEnv {
   @override
   final String dbName;
   @override
+  final String? databaseUrl;
+  @override
   final String dbHost;
   @override
   final int? dbPort;
@@ -69,6 +72,7 @@ class _$AppEnv extends AppEnv {
     String storageDisk = r.string('STORAGE_DISK') ?? d.storageDisk;
     String dbConnection = r.string('DB_CONNECTION') ?? d.dbConnection;
     String dbName = r.string('DB_NAME') ?? d.dbName;
+    String? databaseUrl = r.string('DATABASE_URL');
     String dbHost = r.string('DB_HOST') ?? d.dbHost;
     int? dbPort = r.integer('DB_PORT');
     String dbUsername = r.string('DB_USERNAME') ?? d.dbUsername;
@@ -86,6 +90,7 @@ class _$AppEnv extends AppEnv {
       storageDisk: storageDisk,
       dbConnection: dbConnection,
       dbName: dbName,
+      databaseUrl: databaseUrl,
       dbHost: dbHost,
       dbPort: dbPort,
       dbUsername: dbUsername,
@@ -101,6 +106,8 @@ class _$AppEnvDefaults extends AppEnv {
   @override
   int? get appTotalIsolate =>
       throw StateError('APP_TOTAL_ISOLATE has no default');
+  @override
+  String? get databaseUrl => throw StateError('DATABASE_URL has no default');
   @override
   int? get dbPort => throw StateError('DB_PORT has no default');
 }
