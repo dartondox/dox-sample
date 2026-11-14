@@ -1,8 +1,11 @@
 .dart_tool/
 .DS_Store
 .env
+.env.*
+!.env.example
 bin/server
 storage/cache
+storage/app/
 build/
 *.sqlite
 *.sqlite-journal
