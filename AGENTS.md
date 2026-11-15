@@ -151,6 +151,12 @@ Never edit generated files by hand:
 - **Config.** Read env values from the typed `env` of `lib/config/env.dart` (like `env.appPort`).
   To add a key: add a getter to `AppEnv`, add the key to `.env.example`, then run the generator.
 - **Errors.** Throw `NotFoundHttpException()` and other HTTP exceptions. Dox turns them into answers.
+- **Slow work.** Use `Dox().compute(...)` for heavy CPU work, so the server isolate stays free.
+  In request code use `await Hash.makeAsync(...)` and `await Hash.verifyAsync(...)`, never sync `Hash.make` / `Hash.verify`.
+- **Relations and big tables.** Use `preload()` instead of loading a relation in a loop.
+  Use `paginate()`, `chunk()`, `lazy()` or `cursor()` for big tables, not `get()`.
+- **Strict mode.** It is on in development (`lib/config/app.dart`, `lib/config/database.dart`).
+  Fix the warnings it prints in the dev log. Do not silence them.
 - **Style.** The lints in `analysis_options.yaml` ask for types everywhere (`always_specify_types`).
   Write `List<String> names = <String>[];`, not `var names = [];`.
 

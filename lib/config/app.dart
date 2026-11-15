@@ -52,6 +52,13 @@ AppConfig appConfig = AppConfig(
   /// (made by build_runner). Add one with `dox make:dto`.
   dtos: dtos,
 
+  /// Strict mode
+  /// -------------------------------
+  /// Only in development. It warns in the log when a handler blocks the
+  /// isolate, or when sync `Hash.make` / `Hash.verify` runs in the web server.
+  /// Fix the warning. Do not turn strict mode off.
+  strict: StrictConfig(enabled: env.appEnv == 'development'),
+
   /// Cache stores (config/cache.dart)
   cache: cache,
 
