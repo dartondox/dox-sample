@@ -57,7 +57,7 @@ AppConfig appConfig = AppConfig(
   /// Only in development. It warns in the log when a handler blocks the
   /// isolate, or when sync `Hash.make` / `Hash.verify` runs in the web server.
   /// Fix the warning. Do not turn strict mode off.
-  strict: StrictConfig(enabled: env.appEnv == 'development'),
+  strict: StrictConfig(enabled: Env.appEnv == 'development'),
 
   /// Cache stores (config/cache.dart)
   cache: cache,
