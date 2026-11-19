@@ -56,12 +56,14 @@ class UserGenerator extends Model<User> with SoftDeletes<User> {
     ..name = m['name'] as String?
     ..email = m['email'] as String?
     ..password = m['password'] as String?
-    ..createdAt = m['created_at'] is DateTime?
-        ? m['created_at'] as DateTime?
-        : DateTime.parse(m['created_at'] as String)
-    ..updatedAt = m['updated_at'] is DateTime?
-        ? m['updated_at'] as DateTime?
-        : DateTime.parse(m['updated_at'] as String);
+    ..createdAt = switch (m['created_at']) {
+      DateTime? v => v,
+      Object? v => DateTime.parse(v as String),
+    }
+    ..updatedAt = switch (m['updated_at']) {
+      DateTime? v => v,
+      Object? v => DateTime.parse(v as String),
+    };
   @override
   Map<String, dynamic> columnsToMap() {
     User instance = this as User;
@@ -75,6 +77,26 @@ class UserGenerator extends Model<User> with SoftDeletes<User> {
     };
 
     return map;
+  }
+
+  @override
+  dynamic $columnValue(String column) {
+    User instance = this as User;
+    switch (column) {
+      case 'id':
+        return instance.id;
+      case 'name':
+        return instance.name;
+      case 'email':
+        return instance.email;
+      case 'password':
+        return instance.password;
+      case 'created_at':
+        return instance.createdAt?.toIso8601String();
+      case 'updated_at':
+        return instance.updatedAt?.toIso8601String();
+    }
+    return super.$columnValue(column);
   }
 
   @override
