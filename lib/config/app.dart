@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dox_core/dox_core.dart';
 import 'package:dox_sample/config/cache.dart';
 import 'package:dox_sample/config/cors.dart';
@@ -29,7 +27,7 @@ AppConfig appConfig = AppConfig(
   /// Isolates that serve http requests, all on the same port.
   /// Default is one per CPU core, so the app uses all cores.
   /// Set `APP_TOTAL_ISOLATE` to change it.
-  totalIsolate: env.appTotalIsolate ?? Platform.numberOfProcessors,
+  totalIsolate: env.appTotalIsolate,
 
   /// Global middleware
   /// -------------------------------
