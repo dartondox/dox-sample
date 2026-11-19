@@ -119,7 +119,7 @@ docker build -t my-app .                           # or only the image
 docker run -p 3000:3000 --env-file .env -e DB_HOST=my-db-host my-app
 ```
 
-The app uses one isolate per CPU core. Set `APP_TOTAL_ISOLATE` to change it.
+The app uses one isolate per CPU the container allows. Set `APP_TOTAL_ISOLATE` to change it.
 
 ## Security Vulnerabilities
 
