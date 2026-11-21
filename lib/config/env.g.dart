@@ -13,6 +13,7 @@ class _$AppEnv extends AppEnv {
     required int? appPort,
     required this.appKey,
     required this.appTotalIsolate,
+    required this.appHttp2,
     required String? logLevel,
     required String? cacheStore,
     required String? storageDisk,
@@ -48,6 +49,8 @@ class _$AppEnv extends AppEnv {
   final String appKey;
   @override
   final int? appTotalIsolate;
+  @override
+  final bool? appHttp2;
   final String? _$logLevel;
   @override
   late final String logLevel = _$logLevel ?? super.logLevel;
@@ -99,6 +102,7 @@ class _$AppEnv extends AppEnv {
       String? appKey = $r.string('APP_KEY');
       $r.need('APP_KEY');
       int? appTotalIsolate = $r.integer('APP_TOTAL_ISOLATE');
+      bool? appHttp2 = $r.boolean('APP_HTTP2');
       String? logLevel = $r.string('LOG_LEVEL');
       String? cacheStore = $r.string('CACHE_STORE');
       String? storageDisk = $r.string('STORAGE_DISK');
@@ -117,6 +121,7 @@ class _$AppEnv extends AppEnv {
         appPort: appPort,
         appKey: appKey!,
         appTotalIsolate: appTotalIsolate,
+        appHttp2: appHttp2,
         logLevel: logLevel,
         cacheStore: cacheStore,
         storageDisk: storageDisk,

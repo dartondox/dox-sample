@@ -28,6 +28,9 @@ abstract class AppEnv {
   /// isolates (threads) of the HTTP server. Null: one per CPU the process may use.
   int? get appTotalIsolate;
 
+  /// HTTP/2 (h2c) on the same port as HTTP/1.1. Null: off.
+  bool? get appHttp2;
+
   String get logLevel => 'info';
 
   /// memory, file or redis
