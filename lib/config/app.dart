@@ -29,6 +29,12 @@ AppConfig appConfig = AppConfig(
   /// Set `APP_TOTAL_ISOLATE` to change it.
   totalIsolate: env.appTotalIsolate,
 
+  /// HTTP/2
+  /// -------------------------------
+  /// HTTP/2 over plain TCP (h2c) on the same port as HTTP/1.1,
+  /// eg. for gRPC. Off by default. Set `APP_HTTP2=true` to turn it on.
+  http2: env.appHttp2 ?? false,
+
   /// Global middleware
   /// -------------------------------
   /// By registering global middleware here,
