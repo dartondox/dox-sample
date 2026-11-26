@@ -14,6 +14,8 @@ class _$AppEnv extends AppEnv {
     required this.appKey,
     required this.appTotalIsolate,
     required this.appHttp2,
+    required this.tlsCert,
+    required this.tlsKey,
     required String? logLevel,
     required String? cacheStore,
     required String? storageDisk,
@@ -51,6 +53,10 @@ class _$AppEnv extends AppEnv {
   final int? appTotalIsolate;
   @override
   final bool? appHttp2;
+  @override
+  final String? tlsCert;
+  @override
+  final String? tlsKey;
   final String? _$logLevel;
   @override
   late final String logLevel = _$logLevel ?? super.logLevel;
@@ -103,6 +109,8 @@ class _$AppEnv extends AppEnv {
       $r.need('APP_KEY');
       int? appTotalIsolate = $r.integer('APP_TOTAL_ISOLATE');
       bool? appHttp2 = $r.boolean('APP_HTTP2');
+      String? tlsCert = $r.string('TLS_CERT');
+      String? tlsKey = $r.string('TLS_KEY');
       String? logLevel = $r.string('LOG_LEVEL');
       String? cacheStore = $r.string('CACHE_STORE');
       String? storageDisk = $r.string('STORAGE_DISK');
@@ -122,6 +130,8 @@ class _$AppEnv extends AppEnv {
         appKey: appKey!,
         appTotalIsolate: appTotalIsolate,
         appHttp2: appHttp2,
+        tlsCert: tlsCert,
+        tlsKey: tlsKey,
         logLevel: logLevel,
         cacheStore: cacheStore,
         storageDisk: storageDisk,

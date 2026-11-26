@@ -6,6 +6,17 @@ import 'package:dox_sample/config/env.dart';
 import 'package:dox_sample/generated/container.g.dart';
 import 'package:dox_sample/generated/dtos.g.dart';
 
+/// HTTPS without a proxy, from `TLS_CERT` and `TLS_KEY`.
+/// Null (plain HTTP) when one of them is not set.
+TlsOptions? tlsOptions() {
+  String? cert = env.tlsCert;
+  String? key = env.tlsKey;
+  if (cert == null || key == null) {
+    return null;
+  }
+  return TlsOptions(certificatePath: cert, keyPath: key);
+}
+
 AppConfig appConfig = AppConfig(
   /// Application secret key
   /// -------------------------------
@@ -34,6 +45,12 @@ AppConfig appConfig = AppConfig(
   /// HTTP/2 over plain TCP (h2c) on the same port as HTTP/1.1,
   /// eg. for gRPC. Off by default. Set `APP_HTTP2=true` to turn it on.
   http2: env.appHttp2 ?? false,
+
+  /// HTTPS without a proxy
+  /// -------------------------------
+  /// Off by default. Set `TLS_CERT` and `TLS_KEY` to the certificate
+  /// file and the key file (PEM). The port then accepts only HTTPS.
+  tls: tlsOptions(),
 
   /// Global middleware
   /// -------------------------------
