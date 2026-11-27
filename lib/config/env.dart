@@ -31,6 +31,12 @@ abstract class AppEnv {
   /// HTTP/2 (h2c) on the same port as HTTP/1.1. Null: off.
   bool? get appHttp2;
 
+  /// HTTPS without a proxy: the certificate file (PEM). Null: plain HTTP.
+  String? get tlsCert;
+
+  /// the private key file (PEM) of the certificate
+  String? get tlsKey;
+
   String get logLevel => 'info';
 
   /// memory, file or redis
